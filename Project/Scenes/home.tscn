@@ -153,6 +153,7 @@ layout_mode = 2
 [node name="CheckBox" type="CheckBox" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge1_container"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+disabled = true
 
 [node name="challenge_container" type="VBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge1_container"]
 layout_mode = 2
