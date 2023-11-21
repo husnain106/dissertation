@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=3 uid="uid://c15ko26hercr7"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_7uqxi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l24fp"]
+bg_color = Color(0.784314, 0.784314, 0.784314, 1)
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -467.0
+offset_bottom = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7uqxi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 213.0
+color = Color(0.784314, 0.784314, 0.784314, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 182.0
+
+[node name="play_levels" type="Button" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(200, 27)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
+text = "Play Levels"
+
+[node name="play_online" type="Button" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(150, 27)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
+text = "Play Online
+"
+
+[node name="free_space" type="Button" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
+text = "Free Space"
+
+[node name="shop" type="Button" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
+text = "Shop
+"
+
+[node name="learn" type="Button" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(120, 27)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
+text = "Learn"
+
+[node name="Settings" type="Button" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(120, 27)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
+text = "Play Levels"
+
+[node name="home" type="Button" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(120, 27)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
+text = "Home"
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/play_levels" to="." method="_on_play_levels_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/play_online" to="." method="_on_play_online_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/free_space" to="." method="_on_free_space_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/learn" to="." method="_on_learn_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/home" to="." method="_on_home_pressed"]

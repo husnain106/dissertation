@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ct6y8nhovxvd"]
+[gd_scene load_steps=9 format=3 uid="uid://cseaa4yuujh43"]
 
-[ext_resource type="Script" path="res://main_menu.gd" id="1_4f40b"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_mdbbn"]
+[ext_resource type="PackedScene" uid="uid://5oc51gdevfl5" path="res://header_colour.tscn" id="2_880ur"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tkcp"]
 bg_color = Color(0.192157, 0.392157, 0.956863, 1)
@@ -29,20 +30,23 @@ offset_right = 337.0
 offset_bottom = -182.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4f40b")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -1
-layout_mode = 0
-offset_right = 667.0
-offset_bottom = 375.0
-color = Color(0.992157, 0.992157, 0.992157, 0.45098)
+script = ExtResource("1_mdbbn")
 
 [node name="margin_main" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 offset_right = 667.0
 offset_bottom = 378.0
+
+[node name="ColorRect" type="ColorRect" parent="margin_main"]
+z_index = -1
+layout_mode = 2
+color = Color(0.992157, 0.992157, 0.992157, 0.45098)
+
+[node name="ColorRect2" type="ColorRect" parent="margin_main"]
+z_index = -1
+layout_mode = 2
+color = Color(0.992157, 0.992157, 0.992157, 0.45098)
 
 [node name="vertical_container" type="VBoxContainer" parent="margin_main"]
 layout_mode = 2
@@ -51,28 +55,37 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/margin_bottom = -2
 
+[node name="header_colour" parent="margin_main/vertical_container/margin_row1" instance=ExtResource("2_880ur")]
+layout_mode = 2
+
 [node name="row1" type="HBoxContainer" parent="margin_main/vertical_container/margin_row1"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
+[node name="TextureButton" type="TextureButton" parent="margin_main/vertical_container/margin_row1/row1"]
+visible = false
+layout_mode = 2
+
 [node name="margin_login_signup" type="MarginContainer" parent="margin_main/vertical_container/margin_row1/row1"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_right = 2
 
 [node name="login_signup" type="Button" parent="margin_main/vertical_container/margin_row1/row1/margin_login_signup"]
-custom_minimum_size = Vector2(219, 100)
+custom_minimum_size = Vector2(219, 90)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_0tkcp")
 text = "Login(temporary)"
 
 [node name="margin_quit" type="MarginContainer" parent="margin_main/vertical_container/margin_row1/row1"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_right = -1
 
 [node name="quit" type="Button" parent="margin_main/vertical_container/margin_row1/row1/margin_quit"]
-custom_minimum_size = Vector2(219, 100)
+custom_minimum_size = Vector2(219, 90)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_0tkcp")
 text = "Quit(temporary)"
@@ -93,9 +106,11 @@ theme_override_constants/margin_right = -2
 theme_override_constants/margin_bottom = 0
 
 [node name="play_levels" type="Button" parent="margin_main/vertical_container/margin_row2/row2/margin_play_levels"]
+visible = false
 custom_minimum_size = Vector2(219, 135)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_0tkcp")
+toggle_mode = true
 text = "Play Levels"
 
 [node name="margin_play_multiplayer" type="MarginContainer" parent="margin_main/vertical_container/margin_row2/row2"]
@@ -163,8 +178,8 @@ text = "Settings"
 
 [connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_login_signup/login_signup" to="." method="_on_login_signup_pressed"]
 [connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_login_signup/login_signup" to="." method="_on_play_levels_pressed"]
-[connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_quit/quit" to="." method="_on_play_levels_pressed"]
 [connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_quit/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_quit/quit" to="." method="_on_play_levels_pressed"]
 [connection signal="pressed" from="margin_main/vertical_container/margin_row2/row2/margin_play_levels/play_levels" to="." method="_on_play_levels_pressed"]
 [connection signal="pressed" from="margin_main/vertical_container/margin_row2/row2/margin_play_multiplayer/play_multiplayer" to="." method="_on_play_multiplayer_pressed"]
 [connection signal="pressed" from="margin_main/vertical_container/margin_row2/row2/margin_free_space/free_space" to="." method="_on_free_space_pressed"]
