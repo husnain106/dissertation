@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://xhyipcfi15uo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iuni6"]
+size = Vector2(277.236, 125.942)
+
+[node name="drop_space" type="Control"]
+custom_minimum_size = Vector2(667, 289)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["dropable"]]
+position = Vector2(667, 289)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-333.5, -144.5)
+scale = Vector2(2.4059, 2.2947)
+shape = SubResource("RectangleShape2D_iuni6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(667, 289)
+offset_right = 667.0
+offset_bottom = 289.0

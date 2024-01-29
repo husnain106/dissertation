@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://siqe3v4rnsqd"]
+
+[ext_resource type="Script" path="res://Scripts/not_gate.gd" id="1_v8fc1"]
+[ext_resource type="Texture2D" uid="uid://dkm7yvlcvqooa" path="res://Assets/logic_gates/first_draft/not_gate.png" id="2_4b0dw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wd2m"]
+size = Vector2(99, 37)
+
+[node name="not_gate" type="Node2D"]
+script = ExtResource("1_v8fc1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4b0dw")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_5wd2m")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

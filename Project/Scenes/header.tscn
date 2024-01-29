@@ -1,20 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://dx3nhgnw7ttq"]
 
-[ext_resource type="Script" path="res://Scenes/header.gd" id="1_5kocq"]
+[ext_resource type="Script" path="res://Scripts/header.gd" id="1_hibom"]
 [ext_resource type="Texture2D" uid="uid://dh5q8vtk868js" path="res://Assets/RL_uranked.png" id="1_jfdoc"]
 [ext_resource type="Texture2D" uid="uid://b42ttccbxnlu5" path="res://Assets/game_currency_gold.png" id="2_2yo85"]
 [ext_resource type="Texture2D" uid="uid://bv0dodud66ion" path="res://Assets/Icons/home_button_icon.png" id="3_idr0b"]
 
 [node name="header" type="Control"]
+custom_minimum_size = Vector2(667, 26)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -667.0
-offset_bottom = -375.0
+offset_bottom = -349.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5kocq")
+script = ExtResource("1_hibom")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(667, 26)

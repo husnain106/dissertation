@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://wqw5fnuf18ra"]
+
+[ext_resource type="PackedScene" uid="uid://siqe3v4rnsqd" path="res://Sprites/not_gate.tscn" id="1_y1pvx"]
+
+[node name="logic_gates_bar" type="Control"]
+custom_minimum_size = Vector2(667, 60)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -315.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00891, 1.02562)
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(667, 60)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0.733333, 1, 0.92549, 1)
+
+[node name="not_gate" parent="." instance=ExtResource("1_y1pvx")]
+position = Vector2(120, 30)
