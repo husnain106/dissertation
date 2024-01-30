@@ -18,7 +18,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_4c0kl")
 icon = ExtResource("2_4b0dw")
 flat = true
 
-[node name="Area2D" type="Area2D" parent="Button"]
+[node name="Area2D" type="Area2D" parent="Button" groups=["gate"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Area2D"]
 position = Vector2(54, 54.5)

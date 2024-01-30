@@ -1,12 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://wqw5fnuf18ra"]
+[gd_scene load_steps=9 format=3 uid="uid://wqw5fnuf18ra"]
 
 [ext_resource type="Script" path="res://Scripts/logic_gates_bar.gd" id="1_q8i2w"]
 [ext_resource type="Texture2D" uid="uid://dkm7yvlcvqooa" path="res://Assets/logic_gates/first_draft/not_gate.png" id="3_1faqm"]
 [ext_resource type="Texture2D" uid="uid://ctmo0sa7yxj1h" path="res://Assets/logic_gates/first_draft/and_gate.png" id="3_va2h5"]
 [ext_resource type="Texture2D" uid="uid://c40yyiaexfqtc" path="res://Assets/logic_gates/first_draft/or_gate.png" id="4_58e6s"]
 [ext_resource type="Texture2D" uid="uid://dw6ebulbfdbia" path="res://Assets/Icons/add.png" id="5_4yvn6"]
+[ext_resource type="Texture2D" uid="uid://b7fgwtpnbnyob" path="res://Assets/Icons/icons8-link-50.png" id="6_qg77s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fiahe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxfo2"]
 
 [node name="logic_gates_bar" type="Control"]
 custom_minimum_size = Vector2(667, 60)
@@ -68,7 +71,19 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_fiahe")
 icon = ExtResource("5_4yvn6")
 flat = true
 
+[node name="link_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 6.06
+offset_right = 608.0
+offset_bottom = 64.06
+scale = Vector2(0.735, 0.735)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yxfo2")
+icon = ExtResource("6_qg77s")
+flat = true
+
 [connection signal="pressed" from="not_gate_button" to="." method="_on_not_gate_button_pressed"]
 [connection signal="pressed" from="and_gate_button" to="." method="_on_and_gate_button_pressed"]
 [connection signal="pressed" from="or_gate_button" to="." method="_on_or_gate_button_pressed"]
 [connection signal="pressed" from="new_input_button" to="." method="_on_new_input_button_pressed"]
+[connection signal="pressed" from="link_button" to="." method="_on_link_button_pressed"]

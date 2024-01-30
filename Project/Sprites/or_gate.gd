@@ -31,5 +31,15 @@ func _on_area_2d_mouse_entered():
 func _on_area_2d_mouse_exited():
 	draggable = false
 	scale = Vector2(1,1)
-	
 
+
+func _on_button_pressed():
+	if global.linking:
+		if global.input == null:
+			global.input = global_position
+			print(global.input)
+		elif global.output == null:
+			global.output = global_position
+			print(global.output)
+		else:
+			print("this should never happen")
