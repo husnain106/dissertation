@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fg4t3"]
 size = Vector2(21.6785, 26.4628)
 
-[node name="tempnot_gate" type="Node2D"]
+[node name="not_gate" type="Node2D"]
 script = ExtResource("1_gwums")
 
 [node name="Button" type="Button" parent="."]
@@ -28,5 +28,6 @@ shape = SubResource("RectangleShape2D_fg4t3")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="mouse_entered" from="Button/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Button/Area2D" to="." method="_on_area_2d_mouse_exited"]
