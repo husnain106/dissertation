@@ -4,17 +4,20 @@ var dragging = false
 var draggable = false
 var offset = Vector2(0,0)
 
+var gateType = "or"
+var inputs_available = 2
+var inputs_coordinates = [Vector2(0, 30), Vector2(0, 46)]
+var output_coordinates = Vector2(90,39)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if dragging:
+	if dragging and not global.linking:
 		var newPos = get_global_mouse_position() - offset
 		position = newPos
 
 
 func _on_button_button_down():
-	if draggable:
+	if draggable and not global.linking:
 		dragging = true
 		offset =  get_global_mouse_position() - global_position
 
@@ -32,14 +35,24 @@ func _on_area_2d_mouse_exited():
 	draggable = false
 	scale = Vector2(1,1)
 
+func assign_name():
+	name = gateType + str(global.counts[gateType])
+	global.counts[gateType] += 1
 
 func _on_button_pressed():
 	if global.linking:
 		if global.input == null:
-			global.input = global_position
+			global.input = global_position + output_coordinates
 			print(global.input)
 		elif global.output == null:
-			global.output = global_position
+			if inputs_available == 2:
+				global.output = global_position + inputs_coordinates[0]
+				inputs_available -= 1
+			elif inputs_available == 1:
+				global.output = global_position + inputs_coordinates[1]
+				inputs_available -= 1
+			else:
+				print("Cannot connect, no inputs remaining")
 			print(global.output)
 		else:
 			print("this should never happen")

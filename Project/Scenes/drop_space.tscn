@@ -22,5 +22,6 @@ shape = SubResource("RectangleShape2D_iuni6")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(667, 289)
+layout_mode = 0
 offset_right = 667.0
 offset_bottom = 289.0

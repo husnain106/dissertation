@@ -35,6 +35,7 @@ text = "."
 flat = true
 
 [node name="input name" type="Label" parent="input"]
+layout_mode = 0
 offset_left = -10.0
 offset_top = 30.1606
 offset_right = 30.0

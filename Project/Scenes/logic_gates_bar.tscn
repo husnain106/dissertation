@@ -43,6 +43,7 @@ icon = ExtResource("3_1faqm")
 flat = true
 
 [node name="and_gate_button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 180.0
 offset_top = -18.0
 offset_right = 288.0
@@ -52,6 +53,7 @@ icon = ExtResource("3_va2h5")
 flat = true
 
 [node name="or_gate_button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 330.0
 offset_top = -18.0
 offset_right = 438.0
