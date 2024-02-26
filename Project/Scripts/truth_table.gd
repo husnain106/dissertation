@@ -11,6 +11,10 @@ func _ready():
 	pass
 
 func _on_visibility_changed():
+	output_nodes = null
+	input_nodes = null
+	output_values = []
+	all_input_variations = []
 	if visible:
 		output_nodes = all_output_nodes()
 		#dictionary, where key is the name of the nodes, and the element is the node itself
