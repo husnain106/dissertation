@@ -48,14 +48,14 @@ func _on_link_button_pressed():
 		global.output = null
 		global.input_name = null
 		global.output_name = null
-		scale = Vector2(1.05, 1.05)
+		get_node("link_button").scale = Vector2(1, 1)
 	else:
 		global.linking = false
 		global.input = null
 		global.output = null
 		global.input_name = null
 		global.output_name = null
-		scale = Vector2(1,1)
+		get_node("link_button").scale = Vector2(0.735,0.735)
 	
 func _process(delta):
 	if global.linking and global.input != null and global.output != null:
@@ -75,6 +75,7 @@ func _process(delta):
 		
 		get_parent().add_child(instance)
 		global.linking = false
+		get_node("link_button").scale = Vector2(0.735,0.735)
 		global.input = null
 		global.output = null
 		global.input_name = null
