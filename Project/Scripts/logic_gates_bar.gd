@@ -116,11 +116,17 @@ func delete(node):
 	#delete all connections
 	for x in range(len(global.connections)):
 		if global.connections[x-deleted].pos1_name == node:
-			global.entities[global.connections[x-deleted].pos2_name].inputs_available += 1
+			var pos2_name = global.connections[x-deleted].pos2_name
+			global.entities[pos2_name].inputs_available += 1
 			
 			get_node(global.connections[x-deleted].get_path()).queue_free()
 			global.connections.remove_at(x-deleted)
 			deleted = deleted + 1
+			
+			for connection in global.connections:
+				if connection.pos2_name == pos2_name:
+					connection.pos2 = global.entities[pos2_name].global_position + global.entities[pos2_name].inputs_coordinates[0]
+					connection.update()
 		elif global.connections[x-deleted].pos2_name == node:
 			get_node(global.connections[x-deleted].get_path()).queue_free()
 			global.connections.remove_at(x-deleted)
@@ -131,3 +137,6 @@ func delete(node):
 	global.entities.erase(node)
 	get_node("delete_button").scale = Vector2(0.07, 0.07)
 	
+	
+	for connection in global.connections:
+		print(connection.pos1_name, "  ,  ", connection.pos2_name)
