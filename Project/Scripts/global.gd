@@ -1,5 +1,8 @@
 extends Node2D
 
+var deleting = false
+var deleting_node = null
+
 var linking = false
 
 var input = null
@@ -9,6 +12,8 @@ var output = null
 var output_name = null
 
 var all_input_names = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var inputs_used = []
+
 
 var number_inputs = 0
 var entities = {}

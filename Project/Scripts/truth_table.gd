@@ -32,10 +32,6 @@ func _on_visibility_changed():
 				temp[output] = output_nodes[output].calculate_values(variation)  #calculate values of each output node recursively
 			output_values.append(temp) #a list of dictionaries
 		
-		
-		print("input values are       ", all_input_variations)
-		print("output values are      ", output_values)
-		
 		output(all_input_variations, output_values)
 		
 func output(all_input_variations, output_values):
@@ -85,10 +81,10 @@ func int_to_bin(num, bits):
 	var output = {}
 	for x in range(bits, 0, -1):
 		if num >= 2**(x-1):
-			output[global.all_input_names[count]] = true
+			output[global.inputs_used[count]] = true
 			num -= 2**(x-1)
 		else:
-			output[global.all_input_names[count]] = false
+			output[global.inputs_used[count]] = false
 		count += 1
 	return output
 

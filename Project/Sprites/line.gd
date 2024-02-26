@@ -6,6 +6,7 @@ var pos2:Vector2   #position of where the line ends
 var pos1_name    #the entity name at pos1
 var pos2_name    #the entity name at pos2
 
+var path
 
 func _ready():
 	update()

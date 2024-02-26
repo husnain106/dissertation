@@ -11,6 +11,9 @@ var max_inputs
 var inputs_coordinates
 var output_coordinates
 
+var path
+
+
 func _process(delta):
 	if dragging and not global.linking:
 		var newPos = get_global_mouse_position() - offset
@@ -36,6 +39,9 @@ func update_connections():
 			connection.update_coordinates(initial_position - position, "pos2")
 	initial_position = position
 
+func remove_input(name):
+	pass
+
 
 func _on_area_2d_mouse_entered():
 	draggable = true
@@ -52,8 +58,9 @@ func assign_name():
 	get_node("Button/Area2D/Label").text = name
 
 func _on_button_pressed():
+	if global.deleting:
+		global.deleting_node = name
 	if global.linking:
-		print(name)
 		if global.input == null:
 			global.input = global_position + output_coordinates
 			global.input_name = name

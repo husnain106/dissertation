@@ -16,4 +16,6 @@ func calculate_values(values):
 	for connection in global.connections:
 		if connection.pos2_name == name:
 			node_inputs.append(connection.pos1_name)
+	if len(node_inputs)<2:
+		return null
 	return global.entities[node_inputs[0]].calculate_values(values) or global.entities[node_inputs[1]].calculate_values(values)

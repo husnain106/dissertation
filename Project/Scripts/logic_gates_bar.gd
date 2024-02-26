@@ -29,6 +29,7 @@ func _on_new_input_button_pressed():
 	if input_names_available.size()>1:
 		instance.get_child(1).text = input_names_available.pop_at(0)
 		instance.name = instance.get_child(1).text
+		global.inputs_used.append(instance.name)
 	instance_of(instance)
 	global.number_inputs += 1
 
@@ -37,9 +38,11 @@ func instance_of(instance):
 	if get_parent():
 		instance.position = pos
 		get_parent().add_child(instance)
+		instance.path = instance.get_path()
 	else:
 		instance.posiiton = pos2
 		add_child(instance)
+		instance.path = instance.get_path()
 
 func _on_link_button_pressed():
 	if not global.linking:
@@ -58,6 +61,12 @@ func _on_link_button_pressed():
 		get_node("link_button").scale = Vector2(0.735,0.735)
 	
 func _process(delta):
+	if global.deleting and global.deleting_node != null:
+		delete(global.deleting_node)
+		
+		
+		global.deleting = false
+		global.deleting_node = null
 	if global.linking and global.input != null and global.output != null:
 		#var pos1 = global.input
 		#var pos2 = global.output
@@ -74,6 +83,7 @@ func _process(delta):
 		instance.pos2_name = global.output_name
 		
 		get_parent().add_child(instance)
+		instance.path = instance.get_path()
 		global.linking = false
 		get_node("link_button").scale = Vector2(0.735,0.735)
 		global.input = null
@@ -81,3 +91,38 @@ func _process(delta):
 		global.input_name = null
 		global.output_name = null
 		
+
+
+func _on_delete_button_pressed():
+	if global.deleting:
+		global.deleting = false
+		get_node("delete_button").scale = Vector2(0.07, 0.07)
+	else:
+		global.deleting = true
+		get_node("delete_button").scale = Vector2(0.08, 0.08)
+		
+
+func delete(node):
+	var deleted = 0
+	if global.entities[node].gateType == "input":
+		input_names_available.append(node)
+		global.inputs_used.erase(node)
+	
+	
+	#delete all connections
+	for x in range(len(global.connections)):
+		if global.connections[x-deleted].pos1_name == node:
+			global.entities[global.connections[x-deleted].pos2_name].inputs_available += 1
+			
+			get_node(global.connections[x-deleted].get_path()).queue_free()
+			global.connections.remove_at(x-deleted)
+			deleted = deleted + 1
+		elif global.connections[x-deleted].pos2_name == node:
+			get_node(global.connections[x-deleted].get_path()).queue_free()
+			global.connections.remove_at(x-deleted)
+			deleted = deleted + 1
+	
+	#delete the node itself
+	get_node(global.entities[node].path).queue_free()
+	global.entities.erase(node)
+	
