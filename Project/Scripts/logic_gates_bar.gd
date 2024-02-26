@@ -110,6 +110,27 @@ func _process(delta):
 		global.output_name = null
 		
 		
+		var checking_loops = {}
+		for x in global.entities:
+			if not check_loops(checking_loops, x):
+				print("there is a loop")
+				print(global.entities[instance.pos2_name].inputs_available)
+				global.entities[instance.pos2_name].inputs_available += 1
+				print(global.entities[instance.pos2_name].inputs_available)
+				get_node(instance.path).queue_free()
+				global.connections.erase(instance)
+				break
+
+func check_loops(checking_loops, node):
+	if checking_loops.has(node):
+		return false
+	checking_loops[node] = null
+	for connection in global.connections:
+		if connection.pos2_name == node:
+			if not check_loops(checking_loops, connection.pos1_name):
+				return false
+	checking_loops.erase(node)
+	return true
 
 func _on_delete_button_pressed():
 	if global.deleting and not global.truth_table:
