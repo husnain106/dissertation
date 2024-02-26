@@ -3,7 +3,7 @@ extends Control
 
 
 func _on_play_levels_pressed():
-	get_tree().change_scene_to_file("res://levels.tscn")
+	get_tree().change_scene_to_file("res://Scenes/levels.tscn")
 
 
 func _on_play_online_pressed():

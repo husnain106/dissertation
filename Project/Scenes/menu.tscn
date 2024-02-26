@@ -69,14 +69,7 @@ custom_minimum_size = Vector2(120, 27)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
-text = "Play Levels"
-
-[node name="home" type="Button" parent="ColorRect/VBoxContainer"]
-custom_minimum_size = Vector2(120, 27)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
-text = "Home"
+text = "Settings"
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/play_levels" to="." method="_on_play_levels_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/play_online" to="." method="_on_play_online_pressed"]
@@ -84,4 +77,3 @@ text = "Home"
 [connection signal="pressed" from="ColorRect/VBoxContainer/shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/learn" to="." method="_on_learn_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/home" to="." method="_on_home_pressed"]
