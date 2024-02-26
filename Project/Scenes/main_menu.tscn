@@ -1,0 +1,188 @@
+[gd_scene load_steps=9 format=3 uid="uid://cseaa4yuujh43"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_mdbbn"]
+[ext_resource type="PackedScene" uid="uid://5oc51gdevfl5" path="res://header_colour.tscn" id="2_880ur"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tkcp"]
+bg_color = Color(0.192157, 0.392157, 0.956863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jeql"]
+bg_color = Color(0.192157, 0.392157, 0.956863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbi7u"]
+bg_color = Color(0.192157, 0.392157, 0.956863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bprov"]
+bg_color = Color(0.192157, 0.392157, 0.956863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mevu"]
+bg_color = Color(0.192157, 0.392157, 0.956863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owq3v"]
+bg_color = Color(0.192157, 0.392157, 0.956863, 1)
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 337.0
+offset_bottom = -182.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mdbbn")
+
+[node name="margin_main" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 667.0
+offset_bottom = 378.0
+
+[node name="ColorRect" type="ColorRect" parent="margin_main"]
+z_index = -1
+layout_mode = 2
+color = Color(0.992157, 0.992157, 0.992157, 0.45098)
+
+[node name="ColorRect2" type="ColorRect" parent="margin_main"]
+z_index = -1
+layout_mode = 2
+color = Color(0.992157, 0.992157, 0.992157, 0.45098)
+
+[node name="vertical_container" type="VBoxContainer" parent="margin_main"]
+layout_mode = 2
+
+[node name="margin_row1" type="MarginContainer" parent="margin_main/vertical_container"]
+layout_mode = 2
+theme_override_constants/margin_bottom = -2
+
+[node name="header_colour" parent="margin_main/vertical_container/margin_row1" instance=ExtResource("2_880ur")]
+layout_mode = 2
+
+[node name="row1" type="HBoxContainer" parent="margin_main/vertical_container/margin_row1"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="margin_main/vertical_container/margin_row1/row1"]
+visible = false
+layout_mode = 2
+
+[node name="margin_login_signup" type="MarginContainer" parent="margin_main/vertical_container/margin_row1/row1"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+
+[node name="login_signup" type="Button" parent="margin_main/vertical_container/margin_row1/row1/margin_login_signup"]
+custom_minimum_size = Vector2(219, 90)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0tkcp")
+text = "Login(temporary)"
+
+[node name="margin_quit" type="MarginContainer" parent="margin_main/vertical_container/margin_row1/row1"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_right = -1
+
+[node name="quit" type="Button" parent="margin_main/vertical_container/margin_row1/row1/margin_quit"]
+custom_minimum_size = Vector2(219, 90)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0tkcp")
+text = "Quit(temporary)"
+
+[node name="margin_row2" type="MarginContainer" parent="margin_main/vertical_container"]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = -2
+
+[node name="row2" type="HBoxContainer" parent="margin_main/vertical_container/margin_row2"]
+layout_mode = 2
+
+[node name="margin_play_levels" type="MarginContainer" parent="margin_main/vertical_container/margin_row2/row2"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = -2
+theme_override_constants/margin_bottom = 0
+
+[node name="play_levels" type="Button" parent="margin_main/vertical_container/margin_row2/row2/margin_play_levels"]
+visible = false
+custom_minimum_size = Vector2(219, 135)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0tkcp")
+toggle_mode = true
+text = "Play Levels"
+
+[node name="margin_play_multiplayer" type="MarginContainer" parent="margin_main/vertical_container/margin_row2/row2"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = -1
+theme_override_constants/margin_bottom = 0
+
+[node name="play_multiplayer" type="Button" parent="margin_main/vertical_container/margin_row2/row2/margin_play_multiplayer"]
+custom_minimum_size = Vector2(219, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_7jeql")
+text = "Play Multiplayer"
+
+[node name="margin_free_space" type="MarginContainer" parent="margin_main/vertical_container/margin_row2/row2"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 0
+
+[node name="free_space" type="Button" parent="margin_main/vertical_container/margin_row2/row2/margin_free_space"]
+custom_minimum_size = Vector2(219, 135)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_jbi7u")
+text = "Free Space"
+
+[node name="margin_row3" type="MarginContainer" parent="margin_main/vertical_container"]
+layout_mode = 2
+
+[node name="row3" type="HBoxContainer" parent="margin_main/vertical_container/margin_row3"]
+layout_mode = 2
+
+[node name="margin_shop" type="MarginContainer" parent="margin_main/vertical_container/margin_row3/row3"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = -2
+
+[node name="shop" type="Button" parent="margin_main/vertical_container/margin_row3/row3/margin_shop"]
+custom_minimum_size = Vector2(219, 135)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bprov")
+text = "Shop"
+
+[node name="margin_learn" type="MarginContainer" parent="margin_main/vertical_container/margin_row3/row3"]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_right = -1
+
+[node name="learn" type="Button" parent="margin_main/vertical_container/margin_row3/row3/margin_learn"]
+custom_minimum_size = Vector2(219, 135)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0mevu")
+text = "Learn"
+
+[node name="margin_settings" type="MarginContainer" parent="margin_main/vertical_container/margin_row3/row3"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 0
+
+[node name="settings" type="Button" parent="margin_main/vertical_container/margin_row3/row3/margin_settings"]
+custom_minimum_size = Vector2(219, 135)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_owq3v")
+text = "Settings"
+
+[connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_login_signup/login_signup" to="." method="_on_play_levels_pressed"]
+[connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_login_signup/login_signup" to="." method="_on_login_signup_pressed"]
+[connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_quit/quit" to="." method="_on_play_levels_pressed"]
+[connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_quit/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="margin_main/vertical_container/margin_row2/row2/margin_play_levels/play_levels" to="." method="_on_play_levels_pressed"]
+[connection signal="pressed" from="margin_main/vertical_container/margin_row2/row2/margin_play_multiplayer/play_multiplayer" to="." method="_on_play_multiplayer_pressed"]
+[connection signal="pressed" from="margin_main/vertical_container/margin_row2/row2/margin_free_space/free_space" to="." method="_on_free_space_pressed"]
+[connection signal="pressed" from="margin_main/vertical_container/margin_row3/row3/margin_shop/shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="margin_main/vertical_container/margin_row3/row3/margin_learn/learn" to="." method="_on_learn_pressed"]
+[connection signal="pressed" from="margin_main/vertical_container/margin_row3/row3/margin_settings/settings" to="." method="_on_settings_pressed"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjq2a7f4itccc"]
+
+[ext_resource type="PackedScene" uid="uid://dx3nhgnw7ttq" path="res://Scenes/header.tscn" id="1_jrhmw"]
+[ext_resource type="PackedScene" uid="uid://wqw5fnuf18ra" path="res://Scenes/logic_gates_bar.tscn" id="2_qhnee"]
+[ext_resource type="PackedScene" uid="uid://xhyipcfi15uo" path="res://Scenes/drop_space.tscn" id="2_qyv08"]
+
+[node name="free_space" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="header" parent="VBoxContainer" instance=ExtResource("1_jrhmw")]
+layout_mode = 2
+
+[node name="drop_space" parent="VBoxContainer" instance=ExtResource("2_qyv08")]
+layout_mode = 2
+
+[node name="logic_gates_bar" parent="VBoxContainer" instance=ExtResource("2_qhnee")]
+layout_mode = 2

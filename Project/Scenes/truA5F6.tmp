@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://clhgxm03xgtfk"]
+
+[ext_resource type="Script" path="res://Scripts/truth_table.gd" id="1_qtiti"]
+
+[node name="truth_table" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1294.0
+offset_bottom = -710.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qtiti")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(5.08645, 5.49226)
+color = Color(0.772549, 0.772549, 0.772549, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_right = 203.0
+offset_bottom = 219.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(203, 219)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="hidden" from="." to="." method="_on_hidden"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

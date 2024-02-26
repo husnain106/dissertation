@@ -1,0 +1,442 @@
+[gd_scene load_steps=11 format=3 uid="uid://is0caj7ekoic"]
+
+[ext_resource type="Script" path="res://Scripts/home.gd" id="1_dnasn"]
+[ext_resource type="PackedScene" uid="uid://5oc51gdevfl5" path="res://header_colour.tscn" id="2_t5bf0"]
+[ext_resource type="Texture2D" uid="uid://b5ul6bph1m1i4" path="res://Assets/default_account.png" id="3_n83eq"]
+[ext_resource type="Texture2D" uid="uid://dh5q8vtk868js" path="res://Assets/RL_uranked.png" id="4_avh01"]
+[ext_resource type="Texture2D" uid="uid://b42ttccbxnlu5" path="res://Assets/game_currency_gold.png" id="5_narqd"]
+[ext_resource type="Texture2D" uid="uid://1vctr3kheljq" path="res://Assets/Icons/burger_button_icon2.png" id="6_582mp"]
+[ext_resource type="StyleBox" uid="uid://cu4ixy2uxm2b6" path="res://Assets/green_progress_bar.tres" id="7_e0kuj"]
+[ext_resource type="StyleBox" uid="uid://ri4g4gqpnspm" path="res://Assets/blue_progress_bar.tres" id="8_dln7a"]
+[ext_resource type="PackedScene" uid="uid://c15ko26hercr7" path="res://Scenes/menu.tscn" id="9_jn6l6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sm100"]
+bg_color = Color(0.803922, 0.533333, 0, 1)
+
+[node name="home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dnasn")
+
+[node name="margin_main" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 667.0
+offset_bottom = 375.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ColorRect" type="ColorRect" parent="margin_main"]
+custom_minimum_size = Vector2(667, 375)
+layout_mode = 2
+
+[node name="vertical_container" type="VBoxContainer" parent="margin_main"]
+layout_mode = 2
+
+[node name="margin_account_row" type="MarginContainer" parent="margin_main/vertical_container"]
+z_index = 1
+layout_mode = 2
+
+[node name="header_colour" parent="margin_main/vertical_container/margin_account_row" instance=ExtResource("2_t5bf0")]
+z_index = 1
+custom_minimum_size = Vector2(667, 75)
+layout_mode = 2
+color = Color(0.956863, 0.858824, 0.921569, 0.45098)
+
+[node name="account_row" type="HBoxContainer" parent="margin_main/vertical_container/margin_account_row"]
+layout_mode = 2
+
+[node name="margin_avatar" type="MarginContainer" parent="margin_main/vertical_container/margin_account_row/account_row"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="account_avatar" type="Sprite2D" parent="margin_main/vertical_container/margin_account_row/account_row/margin_avatar"]
+z_index = 1
+position = Vector2(37.5, 37.5)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_n83eq")
+
+[node name="margin_name" type="MarginContainer" parent="margin_main/vertical_container/margin_account_row/account_row"]
+custom_minimum_size = Vector2(200, 75)
+layout_mode = 2
+
+[node name="username" type="Label" parent="margin_main/vertical_container/margin_account_row/account_row/margin_name"]
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "example_username"
+
+[node name="margin_rank" type="MarginContainer" parent="margin_main/vertical_container/margin_account_row/account_row"]
+z_index = 1
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="RlUranked" type="Sprite2D" parent="margin_main/vertical_container/margin_account_row/account_row/margin_rank"]
+position = Vector2(37.5, 37.5)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_avh01")
+
+[node name="margin_gold_amount" type="MarginContainer" parent="margin_main/vertical_container/margin_account_row/account_row"]
+z_index = 1
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="gold_amount" type="Label" parent="margin_main/vertical_container/margin_account_row/account_row/margin_gold_amount"]
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "#number"
+
+[node name="margin_gold_icon" type="MarginContainer" parent="margin_main/vertical_container/margin_account_row/account_row"]
+z_index = 1
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="GameCurrencyGold" type="Sprite2D" parent="margin_main/vertical_container/margin_account_row/account_row/margin_gold_icon"]
+position = Vector2(37.5, 37.5)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_narqd")
+
+[node name="margin_menu_button" type="MarginContainer" parent="margin_main/vertical_container/margin_account_row/account_row"]
+layout_mode = 2
+
+[node name="control_menu_button" type="Control" parent="margin_main/vertical_container/margin_account_row/account_row/margin_menu_button"]
+layout_mode = 2
+
+[node name="menu_button" type="TextureButton" parent="margin_main/vertical_container/margin_account_row/account_row/margin_menu_button/control_menu_button"]
+z_index = 1
+layout_mode = 2
+offset_left = 17.0
+offset_top = 17.0
+offset_right = 529.0
+offset_bottom = 529.0
+scale = Vector2(0.08, 0.08)
+texture_normal = ExtResource("6_582mp")
+stretch_mode = 0
+
+[node name="margin_challenge_row" type="MarginContainer" parent="margin_main/vertical_container"]
+z_index = 1
+layout_mode = 2
+
+[node name="challenge_row" type="HBoxContainer" parent="margin_main/vertical_container/margin_challenge_row"]
+layout_mode = 2
+
+[node name="daily_challenges" type="VBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row"]
+layout_mode = 2
+
+[node name="header" type="HBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="header" type="Label" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/header"]
+custom_minimum_size = Vector2(330, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Daily Challenges
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="daily_challenge1_container" type="HBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge1_container"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+disabled = true
+
+[node name="challenge_container" type="VBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge1_container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge1_container/challenge_container"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Challenge, e.g. complete 10 levels 
+(100 gold)"
+
+[node name="ProgressBar" type="ProgressBar" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge1_container/challenge_container"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/fill = ExtResource("7_e0kuj")
+value = 40.0
+show_percentage = false
+
+[node name="Control" type="Control" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge1_container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge1_container/Control"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 89.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_sm100")
+text = "     CLAIM NOW!!    "
+icon_alignment = 1
+
+[node name="daily_challenge2_container" type="HBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge2_container"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="challenge_container" type="VBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge2_container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge2_container/challenge_container"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Challenge, e.g. complete 10 levels 
+(100 gold)"
+
+[node name="ProgressBar" type="ProgressBar" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge2_container/challenge_container"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/fill = ExtResource("7_e0kuj")
+value = 40.0
+show_percentage = false
+
+[node name="Control" type="Control" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge2_container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge2_container/Control"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 89.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_sm100")
+text = "     CLAIM NOW!!    "
+icon_alignment = 1
+
+[node name="daily_challenge3_container" type="HBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge3_container"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="challenge_container" type="VBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge3_container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge3_container/challenge_container"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Challenge, e.g. complete 10 levels 
+(100 gold)"
+
+[node name="ProgressBar" type="ProgressBar" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge3_container/challenge_container"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/fill = ExtResource("7_e0kuj")
+value = 40.0
+show_percentage = false
+
+[node name="Control" type="Control" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge3_container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge3_container/Control"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 89.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_sm100")
+text = "     CLAIM NOW!!    "
+icon_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="margin_main/vertical_container/margin_challenge_row/challenge_row"]
+visible = false
+z_index = 1
+position = Vector2(332, 0)
+points = PackedVector2Array(0, 40, 0, 282)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="weekly_challenges" type="VBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row"]
+layout_mode = 2
+
+[node name="header" type="HBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="header" type="Label" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/header"]
+custom_minimum_size = Vector2(330, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Weekly Challenges
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="weekly_challenge1_container" type="HBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge1_container"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="challenge_container" type="VBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge1_container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge1_container/challenge_container"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Challenge, e.g. complete 10 levels 
+(100 gold)"
+
+[node name="ProgressBar" type="ProgressBar" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge1_container/challenge_container"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/fill = ExtResource("8_dln7a")
+value = 40.0
+show_percentage = false
+
+[node name="Control" type="Control" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge1_container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge1_container/Control"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 89.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_sm100")
+text = "     CLAIM NOW!!    "
+icon_alignment = 1
+
+[node name="weekly_challenge2_container" type="HBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge2_container"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="challenge_container" type="VBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge2_container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge2_container/challenge_container"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Challenge, e.g. complete 10 levels 
+(100 gold)"
+
+[node name="ProgressBar" type="ProgressBar" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge2_container/challenge_container"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/fill = ExtResource("8_dln7a")
+value = 40.0
+show_percentage = false
+
+[node name="Control" type="Control" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge2_container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge2_container/Control"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 89.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_sm100")
+text = "     CLAIM NOW!!    "
+icon_alignment = 1
+
+[node name="weekly_challenge3_container" type="HBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge3_container"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="challenge_container" type="VBoxContainer" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge3_container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge3_container/challenge_container"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Challenge, e.g. complete 10 levels 
+(100 gold)"
+
+[node name="ProgressBar" type="ProgressBar" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge3_container/challenge_container"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/fill = ExtResource("8_dln7a")
+value = 40.0
+show_percentage = false
+
+[node name="Control" type="Control" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge3_container"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="margin_main/vertical_container/margin_challenge_row/challenge_row/weekly_challenges/weekly_challenge3_container/Control"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 89.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_sm100")
+text = "     CLAIM NOW!!    "
+icon_alignment = 1
+
+[node name="margin_option_row" type="MarginContainer" parent="margin_main/vertical_container"]
+layout_mode = 2
+
+[node name="option_row" type="HBoxContainer" parent="margin_main/vertical_container/margin_option_row"]
+layout_mode = 2
+
+[node name="menu" parent="." instance=ExtResource("9_jn6l6")]
+visible = false
+z_index = 2
+layout_mode = 1
+offset_left = 466.0
+offset_top = 79.0
+offset_right = -1.0
+offset_bottom = -83.0
+
+[connection signal="pressed" from="margin_main/vertical_container/margin_account_row/account_row/margin_menu_button/control_menu_button/menu_button" to="." method="_on_menu_button_pressed"]

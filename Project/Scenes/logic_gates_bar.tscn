@@ -1,0 +1,112 @@
+[gd_scene load_steps=13 format=3 uid="uid://wqw5fnuf18ra"]
+
+[ext_resource type="Script" path="res://Scripts/logic_gates_bar.gd" id="1_q8i2w"]
+[ext_resource type="Texture2D" uid="uid://dkm7yvlcvqooa" path="res://Assets/logic_gates/first_draft/not_gate.png" id="3_1faqm"]
+[ext_resource type="Texture2D" uid="uid://ctmo0sa7yxj1h" path="res://Assets/logic_gates/first_draft/and_gate.png" id="3_va2h5"]
+[ext_resource type="Texture2D" uid="uid://c40yyiaexfqtc" path="res://Assets/logic_gates/first_draft/or_gate.png" id="4_58e6s"]
+[ext_resource type="Texture2D" uid="uid://dw6ebulbfdbia" path="res://Assets/Icons/add.png" id="5_4yvn6"]
+[ext_resource type="Texture2D" uid="uid://b7fgwtpnbnyob" path="res://Assets/Icons/icons8-link-50.png" id="6_qg77s"]
+[ext_resource type="Texture2D" uid="uid://b0yt3ovgifxvm" path="res://Assets/Icons/bin.png" id="7_osium"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcr78"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j7jyw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pri73"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fiahe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxfo2"]
+
+[node name="logic_gates_bar" type="Control"]
+custom_minimum_size = Vector2(667, 60)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -315.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00891, 1.02562)
+mouse_filter = 2
+script = ExtResource("1_q8i2w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(667, 60)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0.733333, 1, 0.92549, 1)
+
+[node name="not_gate_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 19.8234
+offset_top = -17.5504
+offset_right = 127.823
+offset_bottom = 90.4496
+scale = Vector2(0.990128, 0.858595)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lcr78")
+icon = ExtResource("3_1faqm")
+flat = true
+
+[node name="and_gate_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 147.684
+offset_top = -16.5753
+offset_right = 255.684
+offset_bottom = 91.4247
+scale = Vector2(0.990128, 0.858595)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j7jyw")
+icon = ExtResource("3_va2h5")
+flat = true
+
+[node name="or_gate_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 272.571
+offset_top = -17.5504
+offset_right = 380.571
+offset_bottom = 90.4496
+scale = Vector2(0.990128, 0.858595)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pri73")
+icon = ExtResource("4_58e6s")
+flat = true
+
+[node name="new_input_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 425.211
+offset_top = 12.6753
+offset_right = 945.211
+offset_bottom = 532.675
+scale = Vector2(0.0600909, 0.06)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fiahe")
+icon = ExtResource("5_4yvn6")
+flat = true
+
+[node name="link_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 501.531
+offset_top = 7.80016
+offset_right = 559.531
+offset_bottom = 65.8002
+scale = Vector2(0.735, 0.735)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yxfo2")
+icon = ExtResource("6_qg77s")
+flat = true
+
+[node name="delete_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 583.798
+offset_top = 11.7002
+offset_right = 1103.8
+offset_bottom = 531.7
+scale = Vector2(0.07, 0.07)
+icon = ExtResource("7_osium")
+flat = true
+
+[connection signal="pressed" from="not_gate_button" to="." method="_on_not_gate_button_pressed"]
+[connection signal="pressed" from="and_gate_button" to="." method="_on_and_gate_button_pressed"]
+[connection signal="pressed" from="or_gate_button" to="." method="_on_or_gate_button_pressed"]
+[connection signal="pressed" from="new_input_button" to="." method="_on_new_input_button_pressed"]
+[connection signal="pressed" from="link_button" to="." method="_on_link_button_pressed"]
+[connection signal="pressed" from="delete_button" to="." method="_on_delete_button_pressed"]
