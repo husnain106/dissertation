@@ -30,6 +30,7 @@ func _on_new_input_button_pressed():
 		instance.get_child(1).text = input_names_available.pop_at(0)
 		instance.name = instance.get_child(1).text
 	instance_of(instance)
+	global.number_inputs += 1
 
 
 func instance_of(instance):

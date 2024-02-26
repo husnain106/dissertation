@@ -25,6 +25,14 @@ position = Vector2(54, 54.5)
 scale = Vector2(0.997875, 1)
 shape = SubResource("RectangleShape2D_4ydaw")
 
+[node name="Label" type="Label" parent="Button/Area2D"]
+offset_left = 55.0
+offset_top = 48.0
+offset_right = 92.0
+offset_bottom = 71.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 9
+
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

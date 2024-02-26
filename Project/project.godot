@@ -22,8 +22,9 @@ GatesClass="*res://Scripts/gates_class.gd"
 
 [display]
 
-window/size/viewport_width=667
-window/size/viewport_height=375
+window/size/viewport_width=1334
+window/size/viewport_height=750
+window/stretch/scale=2.0
 window/handheld/orientation=1
 
 [input]

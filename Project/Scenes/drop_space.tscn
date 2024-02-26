@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://xhyipcfi15uo"]
+[gd_scene load_steps=6 format=3 uid="uid://xhyipcfi15uo"]
 
 [ext_resource type="Script" path="res://Scripts/drop_space.gd" id="1_83rmx"]
+[ext_resource type="Texture2D" uid="uid://biirr5yo0r4tt" path="res://Assets/Icons/truth_table.jpg" id="2_g6hyk"]
+[ext_resource type="PackedScene" uid="uid://clhgxm03xgtfk" path="res://Scenes/truth_table.tscn" id="3_8edip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iuni6"]
 size = Vector2(277.236, 125.942)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kiad2"]
+size = Vector2(239.772, 240.017)
 
 [node name="drop_space" type="Control"]
 custom_minimum_size = Vector2(667, 289)
@@ -11,6 +16,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -667.0
+offset_bottom = -461.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_83rmx")
@@ -28,3 +35,31 @@ custom_minimum_size = Vector2(667, 289)
 layout_mode = 0
 offset_right = 667.0
 offset_bottom = 289.0
+
+[node name="truth_table_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 618.205
+offset_top = 9.0
+offset_right = 2546.21
+offset_bottom = 1937.0
+scale = Vector2(0.0199187, 0.02)
+icon = ExtResource("2_g6hyk")
+
+[node name="Area2D" type="Area2D" parent="truth_table_button"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="truth_table_button/Area2D"]
+position = Vector2(955.459, 956.525)
+scale = Vector2(8.695, 8.695)
+shape = SubResource("RectangleShape2D_kiad2")
+
+[node name="truth_table" parent="." instance=ExtResource("3_8edip")]
+visible = false
+layout_mode = 1
+offset_left = 402.0
+offset_top = 6.0
+offset_right = -265.0
+offset_bottom = -283.0
+
+[connection signal="pressed" from="truth_table_button" to="." method="_on_truth_table_button_pressed"]
+[connection signal="mouse_entered" from="truth_table_button/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="truth_table_button/Area2D" to="." method="_on_area_2d_mouse_exited"]

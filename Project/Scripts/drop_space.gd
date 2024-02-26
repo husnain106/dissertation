@@ -18,8 +18,21 @@ func _ready():
 		"not" : 0}
 
 	global.connections = []
+	global.number_inputs = 0
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_area_2d_mouse_entered():
+	get_child(2).scale = Vector2(0.02*1.05, 0.02*1.05)
+
+func _on_area_2d_mouse_exited():
+	get_child(2).scale = Vector2(0.02,0.02)
+
+func _on_truth_table_button_pressed():
+	if get_node("truth_table").visible == false:
+		get_node("truth_table").show()
+	else:
+		get_node("truth_table").hide()
+	
+	var temp = get_node("ColorRect").get_color()
+	get_node("ColorRect").set_color(get_node("truth_table").get_node("ColorRect").get_color())
+	get_node("truth_table").get_node("ColorRect").set_color(temp)
