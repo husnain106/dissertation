@@ -32,20 +32,23 @@ func _on_visibility_changed():
 		print("input values are       ", all_input_variations)
 		print("output values are      ", output_values)
 		
+		output(all_input_variations, output_values)
 		
-		for x in range (len(output_values)):
-			var label = Label.new()
-			var label2 = Label.new()
-			label.modulate = Color(0,0,0)
-			label2.modulate = Color(0,0,0)
+func output(all_input_variations, output_values):
+	for x in range (len(output_values)):
+		var a = Label.new()
+		var b = Label.new()
 		
-			var a = label
-			a.text = dictionary_to_string(all_input_variations[x])
-			get_node("ScrollContainer/GridContainer").add_child(a)
-			var b = label2
-			b.text = dictionary_to_string(output_values[x])
-			b.position = Vector2(10,10)
-			get_node("ScrollContainer/GridContainer").add_child(b)
+		var open_sans = load("res://Assets/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf")
+		a.modulate = Color(0,0,0)
+		b.modulate = Color(0,0,0)
+		
+		a.text = dictionary_to_string(all_input_variations[x])
+		get_node("ScrollContainer/GridContainer").add_child(a)
+		
+		
+		b.text = dictionary_to_string(output_values[x])
+		get_node("ScrollContainer/GridContainer").add_child(b)
 		
 		
 		

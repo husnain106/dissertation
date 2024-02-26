@@ -26,6 +26,14 @@ rotation = -3.14159
 scale = Vector2(4.61287, -1.39819)
 shape = SubResource("RectangleShape2D_fg4t3")
 
+[node name="Label" type="Label" parent="Button/Area2D"]
+offset_left = 39.0
+offset_top = 47.0
+offset_right = 67.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 9
+
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

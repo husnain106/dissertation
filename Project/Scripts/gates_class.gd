@@ -49,6 +49,7 @@ func _on_area_2d_mouse_exited():
 func assign_name():
 	name = gateType + str(global.counts[gateType])
 	global.counts[gateType] += 1
+	get_node("Button/Area2D/Label").text = name
 
 func _on_button_pressed():
 	if global.linking:
