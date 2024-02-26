@@ -176,10 +176,10 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_owq3v")
 text = "Settings"
 
-[connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_login_signup/login_signup" to="." method="_on_login_signup_pressed"]
 [connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_login_signup/login_signup" to="." method="_on_play_levels_pressed"]
-[connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_quit/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_login_signup/login_signup" to="." method="_on_login_signup_pressed"]
 [connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_quit/quit" to="." method="_on_play_levels_pressed"]
+[connection signal="pressed" from="margin_main/vertical_container/margin_row1/row1/margin_quit/quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="margin_main/vertical_container/margin_row2/row2/margin_play_levels/play_levels" to="." method="_on_play_levels_pressed"]
 [connection signal="pressed" from="margin_main/vertical_container/margin_row2/row2/margin_play_multiplayer/play_multiplayer" to="." method="_on_play_multiplayer_pressed"]
 [connection signal="pressed" from="margin_main/vertical_container/margin_row2/row2/margin_free_space/free_space" to="." method="_on_free_space_pressed"]

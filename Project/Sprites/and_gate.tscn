@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwm5f4yywhnrq"]
+
+[ext_resource type="Script" path="res://Sprites/and_gate.gd" id="1_dd685"]
+[ext_resource type="Texture2D" uid="uid://ctmo0sa7yxj1h" path="res://Assets/logic_gates/first_draft/and_gate.png" id="2_c36eb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5nxgl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nmsn"]
+size = Vector2(30.0923, 25.3663)
+
+[node name="and_gate" type="Node2D"]
+script = ExtResource("1_dd685")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 108.0
+offset_bottom = 108.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5nxgl")
+icon = ExtResource("2_c36eb")
+flat = true
+
+[node name="Area2D" type="Area2D" parent="Button" groups=["gate"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Area2D"]
+position = Vector2(53.8269, 56.0638)
+scale = Vector2(3.33461, 1.88725)
+shape = SubResource("RectangleShape2D_2nmsn")
+
+[node name="Label" type="Label" parent="Button/Area2D"]
+offset_left = 47.0
+offset_top = 48.0
+offset_right = 83.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 9
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="Button/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Button/Area2D" to="." method="_on_area_2d_mouse_exited"]

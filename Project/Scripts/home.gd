@@ -5,3 +5,4 @@ func _on_menu_button_pressed():
 		get_node("menu").show()
 	else:
 		get_node("menu").hide()
+			

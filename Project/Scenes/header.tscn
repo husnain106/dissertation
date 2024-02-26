@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx3nhgnw7ttq"]
+
+[ext_resource type="Script" path="res://Scripts/header.gd" id="1_hibom"]
+[ext_resource type="Texture2D" uid="uid://dh5q8vtk868js" path="res://Assets/RL_uranked.png" id="1_jfdoc"]
+[ext_resource type="Texture2D" uid="uid://b42ttccbxnlu5" path="res://Assets/game_currency_gold.png" id="2_2yo85"]
+[ext_resource type="Texture2D" uid="uid://bv0dodud66ion" path="res://Assets/Icons/home_button_icon.png" id="3_idr0b"]
+
+[node name="header" type="Control"]
+custom_minimum_size = Vector2(667, 26)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hibom")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(667, 26)
+layout_mode = 0
+
+[node name="margin_header_row" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 667.0
+offset_bottom = 26.0
+
+[node name="header_colour" type="ColorRect" parent="margin_header_row"]
+custom_minimum_size = Vector2(667, 20)
+layout_mode = 2
+color = Color(0.956863, 0.858824, 0.921569, 0.45098)
+
+[node name="header_row" type="HBoxContainer" parent="margin_header_row"]
+layout_mode = 2
+
+[node name="username" type="Label" parent="margin_header_row/header_row"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "@example_username"
+
+[node name="margin_rank" type="MarginContainer" parent="margin_header_row/header_row"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="RlUranked" type="Sprite2D" parent="margin_header_row/header_row/margin_rank"]
+position = Vector2(10, 12)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_jfdoc")
+
+[node name="margin_gold_amount" type="MarginContainer" parent="margin_header_row/header_row"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="gold_amount" type="Label" parent="margin_header_row/header_row/margin_gold_amount"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "#number"
+
+[node name="margin_gold_icon" type="MarginContainer" parent="margin_header_row/header_row"]
+layout_mode = 2
+
+[node name="GameCurrencyGold" type="Sprite2D" parent="margin_header_row/header_row/margin_gold_icon"]
+position = Vector2(10, 12)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_2yo85")
+
+[node name="margin_home_button" type="MarginContainer" parent="margin_header_row/header_row"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="margin_header_row/header_row/margin_home_button"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="margin_header_row/header_row/margin_home_button/Control"]
+layout_mode = 0
+offset_left = 325.0
+offset_right = 837.0
+offset_bottom = 512.0
+scale = Vector2(0.04, 0.04)
+texture_normal = ExtResource("3_idr0b")
+
+[connection signal="pressed" from="margin_header_row/header_row/margin_home_button/Control/TextureButton" to="." method="_on_texture_button_pressed"]

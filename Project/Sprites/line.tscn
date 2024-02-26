@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b03iohvk687u6"]
+
+[ext_resource type="Script" path="res://Sprites/line.gd" id="1_lvmi8"]
+
+[node name="line" type="Line2D"]
+position = Vector2(12.67, 16.085)
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0)
+width = 1.0
+default_color = Color(0, 0, 0, 1)
+script = ExtResource("1_lvmi8")
