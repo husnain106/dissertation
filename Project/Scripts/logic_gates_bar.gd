@@ -7,21 +7,35 @@ var node
 var input_names_available = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
 
+func disable_linking_and_deleting():
+	global.linking = false
+	global.input = null
+	global.output = null
+	global.input_name = null
+	global.output_name = null
+	global.deleting = false
+	global.deleting_node = null
+	
+	get_node("link_button").scale = Vector2(0.735, 0.735)
+	get_node("delete_button").scale = Vector2(0.07, 0.07)
 
 func _on_and_gate_button_pressed():
 	if not global.truth_table:
+		disable_linking_and_deleting()
 		node = load("res://Sprites/and_gate.tscn")
 		var instance = node.instantiate()
 		instance_of(instance)
 
 func _on_or_gate_button_pressed():
 	if not global.truth_table:
+		disable_linking_and_deleting()
 		node = load("res://Sprites/or_gate.tscn")
 		var instance = node.instantiate()
 		instance_of(instance)
 
 func _on_not_gate_button_pressed():
 	if not global.truth_table:
+		disable_linking_and_deleting()
 		node = load("res://Sprites/not_gate.tscn")
 		var instance = node.instantiate()
 		instance_of(instance)
@@ -30,6 +44,7 @@ func _on_new_input_button_pressed():
 	node = load("res://Sprites/inputs.tscn")
 	var instance = node.instantiate()
 	if input_names_available.size()>0 and not global.truth_table:
+		disable_linking_and_deleting()
 		instance.get_child(1).text = input_names_available.pop_at(0)
 		print(input_names_available)
 		instance.name = instance.get_child(1).text
@@ -74,7 +89,6 @@ func _process(delta):
 	if global.linking and global.input != null and global.output != null and not global.truth_table:
 		#var pos1 = global.input
 		#var pos2 = global.output
-		
 		node = load("res://Sprites/line.tscn")
 		var instance = node.instantiate()
 		#var array = PackedVector2Array([pos1, Vector2((pos1[0] + pos2[0])/2, pos1[1]), Vector2((pos1[0] + pos2[0])/2, pos2[1]), Vector2(pos2[0], pos2[1])])
@@ -95,7 +109,7 @@ func _process(delta):
 		global.input_name = null
 		global.output_name = null
 		
-
+		
 
 func _on_delete_button_pressed():
 	if global.deleting and not global.truth_table:
@@ -139,4 +153,4 @@ func delete(node):
 	
 	
 	for connection in global.connections:
-		print(connection.pos1_name, "  ,  ", connection.pos2_name)
+		print(connection.pos1_name, "  ,  ", connection.po2)
