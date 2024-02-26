@@ -9,24 +9,27 @@ var input_names_available = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "
 
 
 func _on_and_gate_button_pressed():
-	node = load("res://Sprites/and_gate.tscn")
-	var instance = node.instantiate()
-	instance_of(instance)
+	if not global.truth_table:
+		node = load("res://Sprites/and_gate.tscn")
+		var instance = node.instantiate()
+		instance_of(instance)
 
 func _on_or_gate_button_pressed():
-	node = load("res://Sprites/or_gate.tscn")
-	var instance = node.instantiate()
-	instance_of(instance)
+	if not global.truth_table:
+		node = load("res://Sprites/or_gate.tscn")
+		var instance = node.instantiate()
+		instance_of(instance)
 
 func _on_not_gate_button_pressed():
-	node = load("res://Sprites/not_gate.tscn")
-	var instance = node.instantiate()
-	instance_of(instance)
+	if not global.truth_table:
+		node = load("res://Sprites/not_gate.tscn")
+		var instance = node.instantiate()
+		instance_of(instance)
 
 func _on_new_input_button_pressed():
 	node = load("res://Sprites/inputs.tscn")
 	var instance = node.instantiate()
-	if input_names_available.size()>0:
+	if input_names_available.size()>0 and not global.truth_table:
 		instance.get_child(1).text = input_names_available.pop_at(0)
 		print(input_names_available)
 		instance.name = instance.get_child(1).text
@@ -46,14 +49,14 @@ func instance_of(instance):
 		instance.path = instance.get_path()
 
 func _on_link_button_pressed():
-	if not global.linking:
+	if not global.linking and not global.deleting and not global.truth_table:
 		global.linking = true
 		global.input = null
 		global.output = null
 		global.input_name = null
 		global.output_name = null
 		get_node("link_button").scale = Vector2(1, 1)
-	else:
+	elif global.linking and not global.truth_table:
 		global.linking = false
 		global.input = null
 		global.output = null
@@ -62,13 +65,13 @@ func _on_link_button_pressed():
 		get_node("link_button").scale = Vector2(0.735,0.735)
 	
 func _process(delta):
-	if global.deleting and global.deleting_node != null:
+	if global.deleting and global.deleting_node != null and not global.truth_table:
 		delete(global.deleting_node)
 		
 		
 		global.deleting = false
 		global.deleting_node = null
-	if global.linking and global.input != null and global.output != null:
+	if global.linking and global.input != null and global.output != null and not global.truth_table:
 		#var pos1 = global.input
 		#var pos2 = global.output
 		
@@ -95,10 +98,10 @@ func _process(delta):
 
 
 func _on_delete_button_pressed():
-	if global.deleting:
+	if global.deleting and not global.truth_table:
 		global.deleting = false
 		get_node("delete_button").scale = Vector2(0.07, 0.07)
-	else:
+	elif not global.deleting and not global.linking and not global.truth_table:
 		global.deleting = true
 		get_node("delete_button").scale = Vector2(0.08, 0.08)
 		
@@ -126,4 +129,5 @@ func delete(node):
 	#delete the node itself
 	get_node(global.entities[node].path).queue_free()
 	global.entities.erase(node)
+	get_node("delete_button").scale = Vector2(0.07, 0.07)
 	

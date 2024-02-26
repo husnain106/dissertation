@@ -15,7 +15,7 @@ var path
 
 
 func _process(delta):
-	if dragging and not global.linking:
+	if dragging and not global.linking and not global.truth_table:
 		var newPos = get_global_mouse_position() - offset
 		position = newPos
 
@@ -44,8 +44,9 @@ func remove_input(name):
 
 
 func _on_area_2d_mouse_entered():
-	draggable = true
-	scale = Vector2(1.05, 1.05)
+	if not global.truth_table:
+		draggable = true
+		scale = Vector2(1.05, 1.05)
 
 
 func _on_area_2d_mouse_exited():

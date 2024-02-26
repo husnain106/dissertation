@@ -16,6 +16,7 @@ func _on_visibility_changed():
 	output_values = []
 	all_input_variations = []
 	if visible:
+		global.truth_table = true
 		output_nodes = all_output_nodes()
 		#dictionary, where key is the name of the nodes, and the element is the node itself
 		
@@ -33,7 +34,9 @@ func _on_visibility_changed():
 			output_values.append(temp) #a list of dictionaries
 		
 		output(all_input_variations, output_values)
-		
+	else:
+		global.truth_table = false
+
 func output(all_input_variations, output_values):
 	for x in range (len(output_values)):
 		var a = Label.new()
