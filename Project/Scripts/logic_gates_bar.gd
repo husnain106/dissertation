@@ -26,12 +26,13 @@ func _on_not_gate_button_pressed():
 func _on_new_input_button_pressed():
 	node = load("res://Sprites/inputs.tscn")
 	var instance = node.instantiate()
-	if input_names_available.size()>1:
+	if input_names_available.size()>0:
 		instance.get_child(1).text = input_names_available.pop_at(0)
+		print(input_names_available)
 		instance.name = instance.get_child(1).text
 		global.inputs_used.append(instance.name)
-	instance_of(instance)
-	global.number_inputs += 1
+		instance_of(instance)
+		global.number_inputs += 1
 
 
 func instance_of(instance):
