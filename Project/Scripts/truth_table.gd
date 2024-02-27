@@ -10,6 +10,31 @@ var all_input_variations = []
 func _ready():
 	pass
 
+func get_truth_table_values(): #this is very similar to _on_visibility_change, this will be called when playing levels to check if the user has completed the level or not
+	output_nodes = null
+	input_nodes = null
+	output_values = []
+	all_input_variations = []
+	
+	output_nodes = all_output_nodes()
+	#dictionary, where key is the name of the nodes, and the element is the node itself
+	
+	input_nodes = all_input_values()
+	#dictionary, where key is the name of the nodes, and the element is the node itself
+	
+	all_input_variations = input_variations()
+	#a list of dictionaires which represent each variation
+	
+	for variation in all_input_variations:
+		#variation is a dictinary
+		var temp = {}
+		for output in output_nodes:
+			temp[output] = output_nodes[output].calculate_values(variation)  #calculate values of each output node recursively
+		output_values.append(temp) #a list of dictionaries
+	
+	#output(all_input_variations, output_values)
+	return output_values
+
 func _on_visibility_changed():
 	output_nodes = null
 	input_nodes = null

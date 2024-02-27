@@ -1,14 +1,18 @@
 extends Node
 
 #the initial incomplete circuit that the user will need to complete
-var entities = {}   #a dictionary where key is the name, element is an array where index 0 is type and index 1 is vector for position
-var connections = [] #a list of dictionaries where each dictionary is a connection and the dictionaries contain the two connecting entities
-var used_inputs = [] #the inputs names already used
-var input_names_available = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var initial_entities = {}   #a dictionary where key is the name, element is an array where index 0 is type and index 1 is vector for position
+var initial_connections = [] #a list of dictionaries where each dictionary is a connection and the dictionaries contain the two connecting entities
+
+
+#the intended solution, same format as the initial
+var intended_solution_entities = {}
+var intended_solution_connections = []
+
 
 #the truth table to compare if the user has finished the level
-var input_variations = []
-var truth_table_values = []
+var input_variations = [] #a list of dictionaries
+var truth_table_values = [] #a list of dictionaries
 
 #changes depending on what can the user do or not in this level:
 #true -> can be used
@@ -29,14 +33,14 @@ func _process(delta):
 
 #add and delete logic gates or inputs
 func add_entities(type, pos, name):
-	entities[name] = [type, pos]
+	initial_entities[name] = [type, pos]
 
 func delete_entities():
-	entities.erase(name)
+	initial_entities.erase(name)
 
 #add or delete connections
 func add_connections(name1, name2):
-	connections.append({"pos1": name1, "pos2":name2})
+	initial_connections.append({"pos1": name1, "pos2":name2})
 
 func delete_connections(name1, name2):
 	pass
@@ -44,3 +48,9 @@ func delete_connections(name1, name2):
 #calculate the input variations for truth tables and the values
 func calculate_truth_table():
 	pass
+
+func random_position():
+	var x = randi_range(100,500)
+	var y = randi_range(100, 200)
+	
+	return Vector2(x,y)

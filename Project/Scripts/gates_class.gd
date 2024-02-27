@@ -39,9 +39,9 @@ func update_connections():
 			connection.update_coordinates(initial_position - position, "pos2")
 	initial_position = position
 
-func remove_input(name):
-	pass
-
+func move_to(pos):
+	print("moving ", name, " to ", pos)
+	position = pos
 
 func _on_area_2d_mouse_entered():
 	if not global.truth_table:
