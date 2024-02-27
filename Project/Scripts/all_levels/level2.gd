@@ -11,12 +11,13 @@ func _init():
 	
 	intended_solution_entities = {
 		"not0": ["not", random_position()],
+		"not1": ["not", random_position()],
 		"A": ["input", random_position()]
 	}
-	intended_solution_connections = [{"pos1": "A", "pos2": "not0"}]
+	intended_solution_connections = [{"pos1": "A", "pos2": "not0"}, {"pos1": "not0", "pos2": "not1"}]
 	
 	input_variations = [{"A" : false}, {"A": true}]
-	truth_table_values = [{"not0": true}, {"not0": false}]
+	truth_table_values = [{"not1": false}, {"not1": true}]
 	
 	
 	#Can only connect already available entities in this level

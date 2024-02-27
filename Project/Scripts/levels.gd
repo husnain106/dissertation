@@ -1,10 +1,12 @@
 extends Control
 
-var level_number = 1
 var curr_level
 
 func _ready():
-	var load_level = load("res://Scripts/all_levels/level1.gd")
+	#get_node("VBoxContainer/logic_gates_bar").clear()
+	print(global.entities)
+	var path = "res://Scripts/all_levels/level" + str(global.level_number)+ ".gd"
+	var load_level = load(path)
 	curr_level = load_level.new()
 	
 	load_entities(curr_level.initial_entities)
@@ -32,4 +34,7 @@ func add_connections(connections):
 func _process(delta):
 	var output = get_node("VBoxContainer/drop_space/truth_table").get_truth_table_values()
 	if output == curr_level.truth_table_values:
-		print("Finished")
+		global.level_number += 1
+		global.change_scene_to = "res://Scenes/levels.tscn"
+		get_tree().change_scene_to_file("res://Scenes/home.tscn")
+		

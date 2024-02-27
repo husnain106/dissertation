@@ -175,3 +175,12 @@ func delete(node):
 	
 	for connection in global.connections:
 		print(connection.pos1_name, "  ,  ", connection.po2)
+
+
+func clear():
+	for x in global.entities:
+		delete(x)
+	global.counts["and"] = 0
+	global.counts.erase("not")
+	global.counts["not"] = 0
+	global.counts["or"] = 0

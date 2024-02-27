@@ -30,3 +30,5 @@ layout_mode = 2
 
 [node name="logic_gates_bar" parent="VBoxContainer" instance=ExtResource("3_wsryj")]
 layout_mode = 2
+
+[connection signal="ready" from="." to="." method="_on_ready"]
