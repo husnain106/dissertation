@@ -27,10 +27,7 @@ var buttons_enabled = {
 	"delete" : false
 }
 
-var message = "A NOT gate takes a value and returns the opposite of it. 
-For example if you connect the input A to the not gate using the 
-link button at the bottom and then click on the truth table and you will 
-see how this gate returns the opposite of its input"
+var message = null
 
 #This will check if the user has completed the level or not
 func _process(delta):

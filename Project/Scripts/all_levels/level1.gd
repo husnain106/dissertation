@@ -18,6 +18,11 @@ func _init():
 	input_variations = [{"A" : false}, {"A": true}]
 	truth_table_values = [{"not0": true}, {"not0": false}]
 	
+	message = "A NOT gate takes a value and returns the opposite of it. 
+For example if you connect the input A to the not gate 
+using the link button at the bottom and then click 
+on the truth table and you will see how this gate 
+returns the opposite of its input"
 	
 	#Can only connect already available entities in this level
 	var buttons_enabled = {

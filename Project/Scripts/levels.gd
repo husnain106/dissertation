@@ -2,6 +2,7 @@ extends Control
 
 var curr_level
 var completed = false
+var time
 
 func _ready():
 	#get_node("VBoxContainer/logic_gates_bar").clear()
@@ -12,8 +13,22 @@ func _ready():
 	completed = false
 	curr_level = load_level.new()
 	
+	show_message(curr_level)
+	
+	#await get_node("VBoxContainer/drop_space/level_hint/Timer").timeout
+	
+	#print("timer done")
+	
 	load_entities(curr_level.initial_entities)
 	#add_connections(curr_level.initial_connections)
+
+
+func show_message(level):
+	if level.message == null:
+		return "no message to display"
+	else:
+		get_node("VBoxContainer/drop_space/level_hint").text = str(level.message)
+		return level.message
 
 func load_entities(entities):
 	for x in entities:
@@ -35,6 +50,7 @@ func add_connections(connections):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	time = delta
 	var output = get_node("VBoxContainer/drop_space/truth_table").get_truth_table_values()
 	if not completed and output == curr_level.truth_table_values:
 		completed = true
@@ -50,3 +66,21 @@ func _process(delta):
 	else:
 		global.correct_truth_table = curr_level.truth_table_values
 		
+
+
+func _on_timer_timeout():
+	print("timer done")
+
+
+func _on_hint_button_pressed():
+	if get_node("VBoxContainer/drop_space/level_hint").visible:
+		get_node("VBoxContainer/drop_space/level_hint").hide()
+	else:
+		get_node("VBoxContainer/drop_space/level_hint").show()
+
+
+func _on_area_2d_mouse_entered():
+	get_node("VBoxContainer/drop_space/hint_button").scale = Vector2(0.055*1.05, 0.055*1.05)
+
+func _on_area_2d_mouse_exited():
+	get_node("VBoxContainer/drop_space/hint_button").scale = Vector2(0.055, 0.055)

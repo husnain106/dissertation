@@ -19,6 +19,11 @@ func _init():
 	input_variations = [{"A" : false}, {"A": true}]
 	truth_table_values = [{"not1": false}, {"not1": true}]
 	
+	message = "A not gate passed into another not gate
+	will return the same value because a double
+	not gate cancels out.
+	To crete another not gate, click on the not gate
+	icon at the bottom"
 	
 	#Can only connect already available entities in this level
 	var buttons_enabled = {
