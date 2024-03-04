@@ -18,7 +18,7 @@ func _ready():
 	enabled_buttons(curr_level.buttons_enabled)
 	
 	load_entities(curr_level.initial_entities)
-	#add_connections(curr_level.initial_connections)
+	add_connections(curr_level.initial_connections)
 
 
 func enabled_buttons(buttons):
@@ -51,8 +51,12 @@ func load_entities(entities):
 		global.entities[x].move_to(entities[x][1])
 
 func add_connections(connections):
-	pass
-
+	for x in connections:
+		get_node("VBoxContainer/logic_gates_bar/link_button").pressed.emit()
+		var pos1 = "VBoxContainer/" + str(x["pos1"] + "/Button")
+		get_node(pos1).pressed.emit()
+		var pos2 = "VBoxContainer/" + str(x["pos2"] + "/Button")
+		get_node(pos2).pressed.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

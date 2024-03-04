@@ -7,7 +7,7 @@ func _init():
 		"not0": ["not", random_position("not")],
 		"A": ["input", random_position("input")]
 	}
-	initial_connections = []
+	initial_connections = [{"pos1": "A", "pos2": "not0"}]
 	
 	intended_solution_entities = { 
 		"not0": "not",
