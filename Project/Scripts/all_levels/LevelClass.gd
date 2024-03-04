@@ -19,12 +19,12 @@ var truth_table_values = [] #a list of dictionaries
 #false -> cannot be used in this level
 #integer value -> The number of times this button can be used 
 var buttons_enabled = {
-	"not" : false,
-	"and" : false,
-	"or" : false,
-	"add_inputs" : false,
-	"linking" : true,
-	"delete" : false
+	"not_gate_button" : false,
+	"and_gate_button" : false,
+	"or_gate_button" : false,
+	"new_input_button" : false,
+	"link_button" : true,
+	"delete_button" : false
 }
 
 var message = null

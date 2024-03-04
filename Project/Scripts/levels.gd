@@ -15,20 +15,26 @@ func _ready():
 	
 	show_message(curr_level)
 	
-	#await get_node("VBoxContainer/drop_space/level_hint/Timer").timeout
-	
-	#print("timer done")
+	enabled_buttons(curr_level.buttons_enabled)
 	
 	load_entities(curr_level.initial_entities)
 	#add_connections(curr_level.initial_connections)
 
 
+func enabled_buttons(buttons):
+	for x in buttons:
+		var button_node = "VBoxContainer/logic_gates_bar/" + str(x)
+		if not buttons[x]:
+			get_node(button_node).disabled = true
+		else:
+			get_node(button_node).disabled = false
+
+
 func show_message(level):
 	if level.message == null:
-		return "no message to display"
+		get_node("VBoxContainer/drop_space/level_hint").hide()
 	else:
 		get_node("VBoxContainer/drop_space/level_hint").text = str(level.message)
-		return level.message
 
 func load_entities(entities):
 	for x in entities:

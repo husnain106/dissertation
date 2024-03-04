@@ -25,11 +25,11 @@ on the truth table and you will see how this gate
 returns the opposite of its input"
 	
 	#Can only connect already available entities in this level
-	var buttons_enabled = {
-	"not" : false,
-	"and" : false,
-	"or" : false,
-	"add_inputs" : false,
-	"linking" : true,
-	"delete" : false
+	buttons_enabled = {
+	"not_gate_button" : false,
+	"and_gate_button" : false,
+	"or_gate_button" : false,
+	"new_input_button" : false,
+	"link_button" : true,
+	"delete_button" : false
 }

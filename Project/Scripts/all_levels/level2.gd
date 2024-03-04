@@ -26,11 +26,11 @@ func _init():
 	icon at the bottom"
 	
 	#Can only connect already available entities in this level
-	var buttons_enabled = {
-	"not" : false,
-	"and" : false,
-	"or" : false,
-	"add_inputs" : false,
-	"linking" : true,
-	"delete" : false
+	buttons_enabled = {
+	"not_gate_button" : true,
+	"and_gate_button" : false,
+	"or_gate_button" : false,
+	"new_input_button" : false,
+	"link_button" : true,
+	"delete_button" : false
 }
