@@ -1,5 +1,7 @@
 extends Node2D
 
+var current_mode = null
+
 var deleting = false
 var deleting_node = null
 
@@ -30,3 +32,6 @@ var all_values = []
 
 var level_number = 1
 var change_scene_to = null
+
+
+var correct_truth_table = []

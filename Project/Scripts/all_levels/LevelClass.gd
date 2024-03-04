@@ -27,6 +27,11 @@ var buttons_enabled = {
 	"delete" : false
 }
 
+var message = "A NOT gate takes a value and returns the opposite of it. 
+For example if you connect the input A to the not gate using the 
+link button at the bottom and then click on the truth table and you will 
+see how this gate returns the opposite of its input"
+
 #This will check if the user has completed the level or not
 func _process(delta):
 	pass
@@ -49,8 +54,14 @@ func delete_connections(name1, name2):
 func calculate_truth_table():
 	pass
 
-func random_position():
-	var x = randi_range(100,500)
-	var y = randi_range(100, 200)
+func random_position(type):
+	var x
+	var y
+	if type == "input":
+		x = randi_range(100,200)
+		y = randi_range(100, 200)
+	else:
+		x = randi_range(250,500)
+		y = randi_range(100, 200)
 	
 	return Vector2(x,y)

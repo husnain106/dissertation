@@ -58,9 +58,37 @@ func _on_visibility_changed():
 				temp[output] = output_nodes[output].calculate_values(variation)  #calculate values of each output node recursively
 			output_values.append(temp) #a list of dictionaries
 		
-		output(all_input_variations, output_values)
+		
+		if global.current_mode == "levels": #if currently playing levels...
+			levels_output(all_input_variations, output_values)
+		else:
+			output(all_input_variations, output_values)
 	else:
 		global.truth_table = false
+
+
+
+func levels_output(all_input_variations, output_values):
+	print(global.correct_truth_table)
+	print(output_values)
+	for x in range (len(output_values)):
+		var a = Label.new()
+		var b = Label.new()
+		
+		var open_sans = load("res://Assets/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf")
+		if (global.correct_truth_table[x] == output_values[x]):
+			a.modulate = Color(0,255,0)
+			b.modulate = Color(0,255,0)
+		else:
+			a.modulate = Color(255, 0, 0)
+			b.modulate = Color(255, 0, 0)
+		
+		a.text = dictionary_to_string(all_input_variations[x])
+		get_node("ScrollContainer/GridContainer").add_child(a)
+		
+		
+		b.text = dictionary_to_string(output_values[x])
+		get_node("ScrollContainer/GridContainer").add_child(b)
 
 func output(all_input_variations, output_values):
 	for x in range (len(output_values)):

@@ -4,15 +4,15 @@ extends "res://Scripts/all_levels/LevelClass.gd"
 # Called when the node enters the scene tree for the first time.
 func _init():
 	initial_entities = {
-		"not0": ["not", random_position()],
-		"A": ["input", random_position()]
+		"not0": ["not", random_position("not")],
+		"A": ["input", random_position("input")]
 	}
 	initial_connections = []
 	
-	intended_solution_entities = {
-		"not0": ["not", random_position()],
-		"not1": ["not", random_position()],
-		"A": ["input", random_position()]
+	intended_solution_entities = { 
+		"not0": "not",
+		"not1": "not",
+		"A": "input"
 	}
 	intended_solution_connections = [{"pos1": "A", "pos2": "not0"}, {"pos1": "not0", "pos2": "not1"}]
 	

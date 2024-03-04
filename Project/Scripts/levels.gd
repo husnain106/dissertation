@@ -1,12 +1,15 @@
 extends Control
 
 var curr_level
+var completed = false
 
 func _ready():
 	#get_node("VBoxContainer/logic_gates_bar").clear()
 	print(global.entities)
+	global.current_mode = "levels"
 	var path = "res://Scripts/all_levels/level" + str(global.level_number)+ ".gd"
 	var load_level = load(path)
+	completed = false
 	curr_level = load_level.new()
 	
 	load_entities(curr_level.initial_entities)
@@ -33,8 +36,17 @@ func add_connections(connections):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var output = get_node("VBoxContainer/drop_space/truth_table").get_truth_table_values()
-	if output == curr_level.truth_table_values:
+	if not completed and output == curr_level.truth_table_values:
+		completed = true
+		global.correct_truth_table = curr_level.truth_table_values
+		get_node("VBoxContainer/drop_space/truth_table_button").pressed.emit() #show the completed truh table to the user
+		await get_node("VBoxContainer/drop_space/truth_table_button").pressed #wait until the user closes the truth table to change to next level
+		
+		
+		#change to the nect scene
 		global.level_number += 1
 		global.change_scene_to = "res://Scenes/levels.tscn"
 		get_tree().change_scene_to_file("res://Scenes/home.tscn")
+	else:
+		global.correct_truth_table = curr_level.truth_table_values
 		
