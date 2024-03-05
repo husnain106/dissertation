@@ -8,15 +8,14 @@ func _ready():
 	#get_node("VBoxContainer/logic_gates_bar").clear()
 	print(global.entities)
 	global.current_mode = "levels"
+	
 	var path = "res://Scripts/all_levels/level" + str(global.level_number)+ ".gd"
 	var load_level = load(path)
 	completed = false
 	curr_level = load_level.new()
 	
 	show_message(curr_level)
-	
 	enabled_buttons(curr_level.buttons_enabled)
-	
 	load_entities(curr_level.initial_entities)
 	add_connections(curr_level.initial_connections)
 
@@ -53,10 +52,12 @@ func load_entities(entities):
 func add_connections(connections):
 	for x in connections:
 		get_node("VBoxContainer/logic_gates_bar/link_button").pressed.emit()
-		var pos1 = "VBoxContainer/" + str(x["pos1"] + "/Button")
+		var pos1 = "VBoxContainer/" + str(x["pos1"]) + "/Button"
 		get_node(pos1).pressed.emit()
-		var pos2 = "VBoxContainer/" + str(x["pos2"] + "/Button")
+		var pos2 = "VBoxContainer/" + str(x["pos2"]) + "/Button"
 		get_node(pos2).pressed.emit()
+		get_node("VBoxContainer/logic_gates_bar")._process(time)
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

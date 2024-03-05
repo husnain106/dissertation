@@ -174,7 +174,7 @@ func delete(node):
 	
 	
 	for connection in global.connections:
-		print(connection.pos1_name, "  ,  ", connection.po2)
+		print(connection.pos1_name, "  ,  ", connection.pos2)
 
 
 func clear():

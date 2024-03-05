@@ -4,7 +4,7 @@ var dragging = false
 var draggable = false
 var offset = Vector2(0,0)
 
-var initial_position
+var initial_position = Vector2(0,0)
 var gateType
 var inputs_available
 var max_inputs
