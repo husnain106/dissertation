@@ -30,7 +30,7 @@ var connections = []
 var all_values = []
 
 
-var level_number = 5
+var level_number = 6
 var change_scene_to = null
 
 

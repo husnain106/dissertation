@@ -76,9 +76,14 @@ func levels_output(all_input_variations, output_values):
 		var b = Label.new()
 		
 		var open_sans = load("res://Assets/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf")
-		if (global.correct_truth_table[x] == output_values[x]):
-			a.modulate = Color(0,255,0)
-			b.modulate = Color(0,255,0)
+
+		if (range(global.correct_truth_table.size()).has(x)):
+			if global.correct_truth_table[x] == output_values[x]:
+				a.modulate = Color(0,255,0)
+				b.modulate = Color(0,255,0)
+			else:
+				a.modulate = Color(255, 0, 0)
+				b.modulate = Color(255, 0, 0)
 		else:
 			a.modulate = Color(255, 0, 0)
 			b.modulate = Color(255, 0, 0)
@@ -145,7 +150,7 @@ func int_to_bin(num, bits):
 	return output
 
 func input_variations():
-	var variations = []  #a list of dicitonaries which will be the binary
+	var variations = []  #a list of dicitonaries which will be the binary numbers
 	var num_inputs = len(input_nodes) #this will represent the number of bits in the binary
 	for x in range(0, 2**num_inputs): #2^num_inputs is the number of different inputs variations which need to be calcualted for the truth table
 		variations.append(int_to_bin(x, num_inputs))
