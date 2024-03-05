@@ -29,8 +29,7 @@ var connections = []
 
 var all_values = []
 
-
-var level_number = 6
+var level_number = 1
 var change_scene_to = null
 
 

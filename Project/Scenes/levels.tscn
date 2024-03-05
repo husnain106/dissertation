@@ -1,13 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://ig422532kete"]
+[gd_scene load_steps=9 format=3 uid="uid://ig422532kete"]
 
 [ext_resource type="Script" path="res://Scripts/levels.gd" id="1_ikqlo"]
 [ext_resource type="PackedScene" uid="uid://dx3nhgnw7ttq" path="res://Scenes/header.tscn" id="1_x8fri"]
 [ext_resource type="PackedScene" uid="uid://xhyipcfi15uo" path="res://Scenes/drop_space.tscn" id="2_7l87g"]
 [ext_resource type="PackedScene" uid="uid://wqw5fnuf18ra" path="res://Scenes/logic_gates_bar.tscn" id="3_wsryj"]
 [ext_resource type="Texture2D" uid="uid://1iodos1b76h4" path="res://Assets/Icons/hint_icon.png" id="4_vgyax"]
+[ext_resource type="Texture2D" uid="uid://cy1vtlryq1p3m" path="res://Assets/Icons/restart_icon.png" id="5_e4e7j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_80k5f"]
 size = Vector2(38.5626, 38.1483)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmvoy"]
+size = Vector2(613.333, 573.333)
 
 [node name="levels" type="Control"]
 layout_mode = 3
@@ -33,6 +37,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="level_hint" type="Label" parent="VBoxContainer/drop_space"]
+visible = false
 z_index = 2
 layout_mode = 0
 offset_left = 127.0
@@ -59,17 +64,36 @@ scale = Vector2(0.055, 0.055)
 icon = ExtResource("4_vgyax")
 flat = true
 
-[node name="Area2D" type="Area2D" parent="VBoxContainer/drop_space/hint_button"]
+[node name="hint_button_area" type="Area2D" parent="VBoxContainer/drop_space/hint_button"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/drop_space/hint_button/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/drop_space/hint_button/hint_button_area"]
 position = Vector2(340.605, 290.604)
 scale = Vector2(21.94, 21.94)
 shape = SubResource("RectangleShape2D_80k5f")
+
+[node name="restart_button" type="Button" parent="VBoxContainer/drop_space"]
+layout_mode = 0
+offset_left = 618.0
+offset_top = 123.0
+offset_right = 1138.0
+offset_bottom = 643.0
+scale = Vector2(0.075, 0.075)
+icon = ExtResource("5_e4e7j")
+flat = true
+
+[node name="restart_button_area" type="Area2D" parent="VBoxContainer/drop_space/restart_button"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/drop_space/restart_button/restart_button_area"]
+position = Vector2(266.666, 260)
+shape = SubResource("RectangleShape2D_nmvoy")
 
 [node name="logic_gates_bar" parent="VBoxContainer" instance=ExtResource("3_wsryj")]
 layout_mode = 2
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="VBoxContainer/drop_space/hint_button" to="." method="_on_hint_button_pressed"]
-[connection signal="mouse_entered" from="VBoxContainer/drop_space/hint_button/Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/drop_space/hint_button/Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/drop_space/hint_button/hint_button_area" to="." method="_on_hint_button_area_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/drop_space/hint_button/hint_button_area" to="." method="_on_hint_button_area_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/drop_space/restart_button" to="." method="_on_restart_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/drop_space/restart_button/restart_button_area" to="." method="_on_restart_button_area_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/drop_space/restart_button/restart_button_area" to="." method="_on_restart_button_area_mouse_exited"]

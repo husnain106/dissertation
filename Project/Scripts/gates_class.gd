@@ -40,7 +40,6 @@ func update_connections():
 	initial_position = position
 
 func move_to(pos):
-	print("moving ", name, " to ", pos)
 	position = pos
 
 func _on_area_2d_mouse_entered():

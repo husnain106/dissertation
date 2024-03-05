@@ -69,8 +69,6 @@ func _on_visibility_changed():
 
 
 func levels_output(all_input_variations, output_values):
-	print(global.correct_truth_table)
-	print(output_values)
 	for x in range (len(output_values)):
 		var a = Label.new()
 		var b = Label.new()

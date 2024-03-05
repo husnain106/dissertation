@@ -6,7 +6,6 @@ var time
 
 func _ready():
 	#get_node("VBoxContainer/logic_gates_bar").clear()
-	print(global.entities)
 	global.current_mode = "levels"
 	
 	var path = "res://Scripts/all_levels/level" + str(global.level_number)+ ".gd"
@@ -79,19 +78,27 @@ func _process(delta):
 		
 
 
-func _on_timer_timeout():
-	print("timer done")
-
-
 func _on_hint_button_pressed():
 	if get_node("VBoxContainer/drop_space/level_hint").visible:
 		get_node("VBoxContainer/drop_space/level_hint").hide()
 	else:
 		get_node("VBoxContainer/drop_space/level_hint").show()
 
-
-func _on_area_2d_mouse_entered():
+func _on_hint_button_area_mouse_entered():
 	get_node("VBoxContainer/drop_space/hint_button").scale = Vector2(0.055*1.05, 0.055*1.05)
 
-func _on_area_2d_mouse_exited():
+
+func _on_hint_button_area_mouse_exited():
 	get_node("VBoxContainer/drop_space/hint_button").scale = Vector2(0.055, 0.055)
+
+
+func _on_restart_button_area_mouse_entered():
+	get_node("VBoxContainer/drop_space/restart_button").scale = Vector2(1.05*0.075, 1.05*0.075)
+
+func _on_restart_button_area_mouse_exited():
+	get_node("VBoxContainer/drop_space/restart_button").scale = Vector2(0.075, 0.075)
+
+
+func _on_restart_button_pressed():
+	global.change_scene_to = "res://Scenes/levels.tscn"
+	get_tree().change_scene_to_file("res://Scenes/home.tscn")
