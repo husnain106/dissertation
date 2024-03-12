@@ -8,7 +8,7 @@ func _ready():
 	#get_node("VBoxContainer/logic_gates_bar").clear()
 	global.current_mode = "levels"
 	
-	var path = "res://Scripts/all_levels/level" + str(global.level_number)+ ".gd"
+	var path = "res://Scripts/all_levels/level" + str(User.level)+ ".gd"
 	var load_level = load(path)
 	completed = false
 	curr_level = load_level.new()
@@ -74,7 +74,7 @@ func _process(delta):
 		
 		
 		#change to the nect scene
-		global.level_number += 1
+		User.level += 1
 		global.change_scene_to = "res://Scenes/levels.tscn"
 		get_tree().change_scene_to_file("res://Scenes/home.tscn")
 	else:
