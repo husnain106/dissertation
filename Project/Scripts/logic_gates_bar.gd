@@ -6,6 +6,8 @@ var node
 
 var input_names_available = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
+func _ready():
+	global.current_mode = "free space"
 
 func disable_linking_and_deleting():
 	global.linking = false

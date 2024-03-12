@@ -69,9 +69,51 @@ func _on_visibility_changed():
 
 
 func levels_output(all_input_variations, output_values):
+	#get_node("ColorRect").scale = Vector2(1.1,1)
+	#get_node("ColorRect2").scale = Vector2(1.1,1)
+	#get_node("ScrollContainer").scale = Vector2(1.1,1)
+	
+	#get_node("ScrollContainer/GridContainer").columns = 3
+	
+	var input = Label.new()
+	var output = Label.new()
+	#var correct_output = Label.new()
+	
+	input.modulate = Color(0,0,0)
+	output.modulate = Color(0,0,0)
+	#correct_output.modulate = Color(0,0,0)
+	
+	input.text = "Inputs"
+	output.text = "Outputs"
+	#correct_output.text = "Correct Outputs"
+	
+	get_node("ScrollContainer/GridContainer").add_child(input)
+	get_node("ScrollContainer/GridContainer").add_child(output)
+	#get_node("ScrollContainer/GridContainer").add_child(correct_output)
+	
+	
+	
 	for x in range (len(output_values)):
+		var dash = Label.new()
+		dash.modulate = Color(0,0,0)
+		dash.text = "--------"
+		get_node("ScrollContainer/GridContainer").add_child(dash)
+		
+		var dash2 = Label.new()
+		dash2.modulate = Color(0,0,0)
+		dash2.text = "--------"
+		get_node("ScrollContainer/GridContainer").add_child(dash2)
+		
+		#var dash3 = Label.new()
+		#dash3.modulate = Color(0,0,0)
+		#dash3.text = "--------"
+		#get_node("ScrollContainer/GridContainer").add_child(dash3)
+		
+		
 		var a = Label.new()
 		var b = Label.new()
+		var c = Label.new()
+		c.modulate = Color(0, 255, 0)
 		
 		var open_sans = load("res://Assets/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf")
 
@@ -92,9 +134,41 @@ func levels_output(all_input_variations, output_values):
 		
 		b.text = dictionary_to_string(output_values[x])
 		get_node("ScrollContainer/GridContainer").add_child(b)
+		
+		#c.text = dictionary_to_string(global.correct_truth_table[x])
+		#get_node("ScrollContainer/GridContainer").add_child(c)
 
 func output(all_input_variations, output_values):
+	#get_node("ColorRect").scale = Vector2(1,1)
+	#get_node("ColorRect2").scale = Vector2(1,1)
+	#get_node("ScrollContainer").scale = Vector2(1,1)
+	
+	
+	#get_node("ScrollContainer/GridContainer").columns = 2
+	var input = Label.new()
+	input.modulate = (Color(0,0,0))
+	input.text = "Inputs"
+	get_node("ScrollContainer/GridContainer").add_child(input)
+	
+	var output = Label.new()
+	output.modulate = (Color(0,0,0))
+	output.text = "Outputs"
+	get_node("ScrollContainer/GridContainer").add_child(output)
+	
 	for x in range (len(output_values)):
+		var dash = Label.new()
+		dash.modulate = Color(0,0,0)
+		dash.text = "--------"
+		get_node("ScrollContainer/GridContainer").add_child(dash)
+		
+		var dash2 = Label.new()
+		dash2.modulate = Color(0,0,0)
+		dash2.text = "--------"
+		get_node("ScrollContainer/GridContainer").add_child(dash2)
+		
+		
+		
+		
 		var a = Label.new()
 		var b = Label.new()
 		
