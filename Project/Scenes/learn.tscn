@@ -1,9 +1,73 @@
-[gd_scene format=3 uid="uid://bjs5br5iohisu"]
+[gd_scene load_steps=9 format=3 uid="uid://bjs5br5iohisu"]
+
+[ext_resource type="PackedScene" uid="uid://dx3nhgnw7ttq" path="res://Scenes/header.tscn" id="1_7tmwe"]
+[ext_resource type="Script" path="res://Scripts/learn.gd" id="1_chatq"]
+[ext_resource type="Texture2D" uid="uid://dkm7yvlcvqooa" path="res://Assets/logic_gates/first_draft/not_gate.png" id="2_ttukh"]
+[ext_resource type="Texture2D" uid="uid://c40yyiaexfqtc" path="res://Assets/logic_gates/first_draft/or_gate.png" id="3_j0y28"]
+[ext_resource type="Texture2D" uid="uid://ctmo0sa7yxj1h" path="res://Assets/logic_gates/first_draft/and_gate.png" id="4_37bf6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qxqic"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x80ew"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mxfor"]
 
 [node name="learn" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -667.0
+offset_bottom = -375.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_chatq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 667.0
+offset_bottom = 375.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 667.0
+offset_bottom = 375.0
+
+[node name="header" parent="VBoxContainer" instance=ExtResource("1_7tmwe")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 345)
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="not_button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qxqic")
+icon = ExtResource("2_ttukh")
+flat = true
+
+[node name="or_button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x80ew")
+icon = ExtResource("3_j0y28")
+flat = true
+
+[node name="and_button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mxfor")
+icon = ExtResource("4_37bf6")
+flat = true
+
+[node name="gate_information_label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/not_button" to="." method="_on_not_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/or_button" to="." method="_on_or_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/and_button" to="." method="_on_and_button_pressed"]

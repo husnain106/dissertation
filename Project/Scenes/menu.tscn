@@ -35,6 +35,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
 text = "Play Levels"
 
 [node name="play_online" type="Button" parent="ColorRect/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(150, 27)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -49,6 +50,13 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
 text = "Free Space"
 
+[node name="learn" type="Button" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(120, 27)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
+text = "Learn"
+
 [node name="shop" type="Button" parent="ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 27)
 layout_mode = 2
@@ -57,14 +65,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
 text = "Shop
 "
 
-[node name="learn" type="Button" parent="ColorRect/VBoxContainer"]
-custom_minimum_size = Vector2(120, 27)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_l24fp")
-text = "Learn"
-
 [node name="Settings" type="Button" parent="ColorRect/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(120, 27)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -74,6 +76,6 @@ text = "Settings"
 [connection signal="pressed" from="ColorRect/VBoxContainer/play_levels" to="." method="_on_play_levels_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/play_online" to="." method="_on_play_online_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/free_space" to="." method="_on_free_space_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/learn" to="." method="_on_learn_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/shop" to="." method="_on_shop_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
