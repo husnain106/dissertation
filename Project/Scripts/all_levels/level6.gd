@@ -3,6 +3,8 @@ extends "res://Scripts/all_levels/LevelClass.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _init():
+	
+	#global.inputs_used = ["A", "B"]
 	initial_entities = {
 		"or0": ["or", random_position("or")],
 		"A": ["input", random_position("input")],

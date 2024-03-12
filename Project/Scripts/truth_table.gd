@@ -145,6 +145,7 @@ func int_to_bin(num, bits):
 		else:
 			output[global.inputs_used[count]] = false
 		count += 1
+		#print(output)
 	return output
 
 func input_variations():

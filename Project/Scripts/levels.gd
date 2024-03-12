@@ -12,7 +12,8 @@ func _ready():
 	var load_level = load(path)
 	completed = false
 	curr_level = load_level.new()
-	
+	#global.correct_truth_table = curr_level.truth_table_values
+	global.inputs_used = []
 	show_message(curr_level)
 	enabled_buttons(curr_level.buttons_enabled)
 	load_entities(curr_level.initial_entities)
@@ -35,6 +36,7 @@ func show_message(level):
 		get_node("VBoxContainer/drop_space/level_hint").text = str(level.message)
 
 func load_entities(entities):
+	global.entities = {}
 	for x in entities:
 		if entities[x][0] == "not":
 			get_node("VBoxContainer/logic_gates_bar/not_gate_button").pressed.emit()
@@ -47,8 +49,10 @@ func load_entities(entities):
 		else:
 			print("Wrong gateType when making the level")
 		global.entities[x].move_to(entities[x][1])
+		print(global.inputs_used)
 
 func add_connections(connections):
+	global.connections = []
 	for x in connections:
 		get_node("VBoxContainer/logic_gates_bar/link_button").pressed.emit()
 		var pos1 = "VBoxContainer/" + str(x["pos1"]) + "/Button"
