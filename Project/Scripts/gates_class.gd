@@ -13,7 +13,6 @@ var output_coordinates
 
 var path
 
-
 func _process(delta):
 	if dragging and not global.linking and not global.truth_table:
 		var newPos = get_global_mouse_position() - offset

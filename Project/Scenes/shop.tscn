@@ -1,9 +1,106 @@
-[gd_scene format=3 uid="uid://2uoqgxe7dfu5"]
+[gd_scene load_steps=12 format=3 uid="uid://2uoqgxe7dfu5"]
+
+[ext_resource type="PackedScene" uid="uid://dx3nhgnw7ttq" path="res://Scenes/header.tscn" id="1_2wl5e"]
+[ext_resource type="Script" path="res://Scenes/shop.gd" id="1_p5u12"]
+[ext_resource type="Texture2D" uid="uid://c40yyiaexfqtc" path="res://Assets/logic_gates/first_draft/or_gate.png" id="2_q2sfq"]
+[ext_resource type="Texture2D" uid="uid://b3qhet3nss5ll" path="res://Assets/logic_gates/blue/or_gate.png" id="3_ca3p0"]
+[ext_resource type="Texture2D" uid="uid://dkm7yvlcvqooa" path="res://Assets/logic_gates/first_draft/not_gate.png" id="3_qmefd"]
+[ext_resource type="Texture2D" uid="uid://wi1xv7bxl47u" path="res://Assets/logic_gates/green/or_gate.png" id="4_dq0dl"]
+[ext_resource type="Texture2D" uid="uid://cwailfk5rlsb7" path="res://Assets/logic_gates/red/or_gate.png" id="5_nrs7d"]
+[ext_resource type="Texture2D" uid="uid://ctmo0sa7yxj1h" path="res://Assets/logic_gates/first_draft/and_gate.png" id="5_ssx4x"]
+[ext_resource type="Texture2D" uid="uid://drofxpxyeqvcb" path="res://Assets/logic_gates/blue/buy_theme.png" id="6_rvnbs"]
+[ext_resource type="Texture2D" uid="uid://dtut3vkajfcsp" path="res://Assets/logic_gates/green/buy_theme.png" id="7_l8ny0"]
+[ext_resource type="Texture2D" uid="uid://bqvivic54n7p4" path="res://Assets/logic_gates/red/buy_theme.png" id="8_gc8sc"]
 
 [node name="shop" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -667.0
+offset_bottom = -375.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_p5u12")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 667.0
+offset_bottom = 375.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = -5
+
+[node name="header" parent="VBoxContainer" instance=ExtResource("1_2wl5e")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "This is what the logic gates will look like:"
+horizontal_alignment = 1
+
+[node name="display_grid" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 140
+columns = 3
+
+[node name="not" type="Button" parent="VBoxContainer/display_grid"]
+layout_mode = 2
+icon = ExtResource("3_qmefd")
+flat = true
+
+[node name="or" type="Button" parent="VBoxContainer/display_grid"]
+layout_mode = 2
+icon = ExtResource("2_q2sfq")
+flat = true
+
+[node name="and" type="Button" parent="VBoxContainer/display_grid"]
+layout_mode = 2
+icon = ExtResource("5_ssx4x")
+flat = true
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Choose the logic gates from the following designs:"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(667, 347)
+layout_mode = 2
+theme_override_constants/h_separation = 25
+columns = 5
+
+[node name="first_draft" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_q2sfq")
+
+[node name="blue" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_ca3p0")
+texture_disabled = ExtResource("6_rvnbs")
+
+[node name="green" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("4_dq0dl")
+texture_disabled = ExtResource("7_l8ny0")
+
+[node name="red" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("5_nrs7d")
+texture_disabled = ExtResource("8_gc8sc")
+
+[connection signal="pressed" from="VBoxContainer/GridContainer/first_draft" to="." method="_on_first_draft_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/blue" to="." method="_on_blue_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/green" to="." method="_on_green_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/red" to="." method="_on_red_pressed"]
