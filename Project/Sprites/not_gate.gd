@@ -9,6 +9,9 @@ func _ready():
 	assign_name()
 	global.entities[name] = self
 	
+	var icon = load("res://Assets/logic_gates/" + User.gates_theme+ "/not_gate.png")
+	get_node("Button").set_button_icon(icon)
+	
 func calculate_values(values):
 	var node_inputs = []
 	for connection in global.connections:

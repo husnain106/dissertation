@@ -1,10 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjs5br5iohisu"]
+[gd_scene load_steps=6 format=3 uid="uid://bjs5br5iohisu"]
 
 [ext_resource type="PackedScene" uid="uid://dx3nhgnw7ttq" path="res://Scenes/header.tscn" id="1_7tmwe"]
 [ext_resource type="Script" path="res://Scripts/learn.gd" id="1_chatq"]
-[ext_resource type="Texture2D" uid="uid://dkm7yvlcvqooa" path="res://Assets/logic_gates/first_draft/not_gate.png" id="2_ttukh"]
-[ext_resource type="Texture2D" uid="uid://c40yyiaexfqtc" path="res://Assets/logic_gates/first_draft/or_gate.png" id="3_j0y28"]
-[ext_resource type="Texture2D" uid="uid://ctmo0sa7yxj1h" path="res://Assets/logic_gates/first_draft/and_gate.png" id="4_37bf6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qxqic"]
 
@@ -48,19 +45,16 @@ layout_mode = 2
 [node name="not_button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qxqic")
-icon = ExtResource("2_ttukh")
 flat = true
 
 [node name="or_button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_x80ew")
-icon = ExtResource("3_j0y28")
 flat = true
 
 [node name="and_button" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_mxfor")
-icon = ExtResource("4_37bf6")
 flat = true
 
 [node name="gate_information_label" type="Label" parent="VBoxContainer/HBoxContainer"]
