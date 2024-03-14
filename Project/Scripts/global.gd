@@ -1,5 +1,7 @@
 extends Node2D
 
+var current_mode = null
+
 var deleting = false
 var deleting_node = null
 
@@ -26,3 +28,8 @@ var counts = {
 var connections = []
 
 var all_values = []
+
+var level_number = 5
+var change_scene_to = null
+
+var correct_truth_table = []

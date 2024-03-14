@@ -6,6 +6,8 @@ var node
 
 var input_names_available = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
+func _ready():
+	global.current_mode = "free space"
 
 func disable_linking_and_deleting():
 	global.linking = false
@@ -46,7 +48,6 @@ func _on_new_input_button_pressed():
 	if input_names_available.size()>0 and not global.truth_table:
 		disable_linking_and_deleting()
 		instance.get_child(1).text = input_names_available.pop_at(0)
-		print(input_names_available)
 		instance.name = instance.get_child(1).text
 		global.inputs_used.append(instance.name)
 		instance_of(instance)
@@ -113,10 +114,7 @@ func _process(delta):
 		var checking_loops = {}
 		for x in global.entities:
 			if not check_loops(checking_loops, x):
-				print("there is a loop")
-				print(global.entities[instance.pos2_name].inputs_available)
 				global.entities[instance.pos2_name].inputs_available += 1
-				print(global.entities[instance.pos2_name].inputs_available)
 				get_node(instance.path).queue_free()
 				global.connections.erase(instance)
 				break
@@ -172,6 +170,11 @@ func delete(node):
 	global.entities.erase(node)
 	get_node("delete_button").scale = Vector2(0.07, 0.07)
 	
-	
-	for connection in global.connections:
-		print(connection.pos1_name, "  ,  ", connection.po2)
+
+
+func clear():
+	for x in global.entities:
+		delete(x)
+	global.counts.erase("and")
+	global.counts.erase("not")
+	global.counts.erase("or")

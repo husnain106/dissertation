@@ -44,9 +44,18 @@ custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 
 [node name="RlUranked" type="Sprite2D" parent="margin_header_row/header_row/margin_rank"]
+visible = false
 position = Vector2(10, 12)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_jfdoc")
+
+[node name="margin_gold_icon" type="MarginContainer" parent="margin_header_row/header_row/margin_rank"]
+layout_mode = 2
+
+[node name="GameCurrencyGold" type="Sprite2D" parent="margin_header_row/header_row/margin_rank/margin_gold_icon"]
+position = Vector2(10, 12)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_2yo85")
 
 [node name="margin_gold_amount" type="MarginContainer" parent="margin_header_row/header_row"]
 layout_mode = 2
@@ -56,14 +65,6 @@ theme_override_constants/margin_left = 8
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "#number"
-
-[node name="margin_gold_icon" type="MarginContainer" parent="margin_header_row/header_row"]
-layout_mode = 2
-
-[node name="GameCurrencyGold" type="Sprite2D" parent="margin_header_row/header_row/margin_gold_icon"]
-position = Vector2(10, 12)
-scale = Vector2(0.03, 0.03)
-texture = ExtResource("2_2yo85")
 
 [node name="margin_home_button" type="MarginContainer" parent="margin_header_row/header_row"]
 layout_mode = 2

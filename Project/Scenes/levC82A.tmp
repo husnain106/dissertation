@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://ig422532kete"]
+
+[ext_resource type="Script" path="res://Scripts/levels.gd" id="1_ikqlo"]
+[ext_resource type="PackedScene" uid="uid://dx3nhgnw7ttq" path="res://Scenes/header.tscn" id="1_x8fri"]
+[ext_resource type="PackedScene" uid="uid://xhyipcfi15uo" path="res://Scenes/drop_space.tscn" id="2_7l87g"]
+[ext_resource type="PackedScene" uid="uid://wqw5fnuf18ra" path="res://Scenes/logic_gates_bar.tscn" id="3_wsryj"]
+
+[node name="levels" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -667.0
+offset_bottom = -375.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ikqlo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="header" parent="VBoxContainer" instance=ExtResource("1_x8fri")]
+layout_mode = 2
+
+[node name="drop_space" parent="VBoxContainer" instance=ExtResource("2_7l87g")]
+layout_mode = 2
+
+[node name="level_hint" type="Label" parent="VBoxContainer/drop_space"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 77.0
+offset_right = 544.0
+offset_bottom = 230.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="Timer" type="Timer" parent="VBoxContainer/drop_space/level_hint"]
+wait_time = 10.0
+
+[node name="logic_gates_bar" parent="VBoxContainer" instance=ExtResource("3_wsryj")]
+layout_mode = 2
+
+[connection signal="ready" from="." to="." method="_on_ready"]

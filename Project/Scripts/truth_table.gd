@@ -10,6 +10,31 @@ var all_input_variations = []
 func _ready():
 	pass
 
+func get_truth_table_values(): #this is very similar to _on_visibility_change, this will be called when playing levels to check if the user has completed the level or not
+	output_nodes = null
+	input_nodes = null
+	output_values = []
+	all_input_variations = []
+	
+	output_nodes = all_output_nodes()
+	#dictionary, where key is the name of the nodes, and the element is the node itself
+	
+	input_nodes = all_input_values()
+	#dictionary, where key is the name of the nodes, and the element is the node itself
+	
+	all_input_variations = input_variations()
+	#a list of dictionaires which represent each variation
+	
+	for variation in all_input_variations:
+		#variation is a dictinary
+		var temp = {}
+		for output in output_nodes:
+			temp[output] = output_nodes[output].calculate_values(variation)  #calculate values of each output node recursively
+		output_values.append(temp) #a list of dictionaries
+	
+	#output(all_input_variations, output_values)
+	return output_values
+
 func _on_visibility_changed():
 	output_nodes = null
 	input_nodes = null
@@ -33,12 +58,117 @@ func _on_visibility_changed():
 				temp[output] = output_nodes[output].calculate_values(variation)  #calculate values of each output node recursively
 			output_values.append(temp) #a list of dictionaries
 		
-		output(all_input_variations, output_values)
+		
+		if global.current_mode == "levels": #if currently playing levels...
+			levels_output(all_input_variations, output_values)
+		else:
+			output(all_input_variations, output_values)
 	else:
 		global.truth_table = false
 
-func output(all_input_variations, output_values):
+
+
+func levels_output(all_input_variations, output_values):
+	#get_node("ColorRect").scale = Vector2(1.1,1)
+	#get_node("ColorRect2").scale = Vector2(1.1,1)
+	#get_node("ScrollContainer").scale = Vector2(1.1,1)
+	
+	#get_node("ScrollContainer/GridContainer").columns = 3
+	
+	var input = Label.new()
+	var output = Label.new()
+	#var correct_output = Label.new()
+	
+	input.modulate = Color(0,0,0)
+	output.modulate = Color(0,0,0)
+	#correct_output.modulate = Color(0,0,0)
+	
+	input.text = "Inputs"
+	output.text = "Outputs"
+	#correct_output.text = "Correct Outputs"
+	
+	get_node("ScrollContainer/GridContainer").add_child(input)
+	get_node("ScrollContainer/GridContainer").add_child(output)
+	#get_node("ScrollContainer/GridContainer").add_child(correct_output)
+	
+	
+	
 	for x in range (len(output_values)):
+		var dash = Label.new()
+		dash.modulate = Color(0,0,0)
+		dash.text = "--------"
+		get_node("ScrollContainer/GridContainer").add_child(dash)
+		
+		var dash2 = Label.new()
+		dash2.modulate = Color(0,0,0)
+		dash2.text = "--------"
+		get_node("ScrollContainer/GridContainer").add_child(dash2)
+		
+		#var dash3 = Label.new()
+		#dash3.modulate = Color(0,0,0)
+		#dash3.text = "--------"
+		#get_node("ScrollContainer/GridContainer").add_child(dash3)
+		
+		
+		var a = Label.new()
+		var b = Label.new()
+		var c = Label.new()
+		c.modulate = Color(0, 255, 0)
+		
+		var open_sans = load("res://Assets/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf")
+
+		if (range(global.correct_truth_table.size()).has(x)):
+			if global.correct_truth_table[x] == output_values[x]:
+				a.modulate = Color(0,255,0)
+				b.modulate = Color(0,255,0)
+			else:
+				a.modulate = Color(255, 0, 0)
+				b.modulate = Color(255, 0, 0)
+		else:
+			a.modulate = Color(255, 0, 0)
+			b.modulate = Color(255, 0, 0)
+		
+		a.text = dictionary_to_string(all_input_variations[x])
+		get_node("ScrollContainer/GridContainer").add_child(a)
+		
+		
+		b.text = dictionary_to_string(output_values[x])
+		get_node("ScrollContainer/GridContainer").add_child(b)
+		
+		#c.text = dictionary_to_string(global.correct_truth_table[x])
+		#get_node("ScrollContainer/GridContainer").add_child(c)
+
+func output(all_input_variations, output_values):
+	#get_node("ColorRect").scale = Vector2(1,1)
+	#get_node("ColorRect2").scale = Vector2(1,1)
+	#get_node("ScrollContainer").scale = Vector2(1,1)
+	
+	
+	#get_node("ScrollContainer/GridContainer").columns = 2
+	var input = Label.new()
+	input.modulate = (Color(0,0,0))
+	input.text = "Inputs"
+	get_node("ScrollContainer/GridContainer").add_child(input)
+	
+	var output = Label.new()
+	output.modulate = (Color(0,0,0))
+	output.text = "Outputs"
+	get_node("ScrollContainer/GridContainer").add_child(output)
+	
+	for x in range (len(output_values)):
+		var dash = Label.new()
+		dash.modulate = Color(0,0,0)
+		dash.text = "--------"
+		get_node("ScrollContainer/GridContainer").add_child(dash)
+		
+		var dash2 = Label.new()
+		dash2.modulate = Color(0,0,0)
+		dash2.text = "--------"
+		get_node("ScrollContainer/GridContainer").add_child(dash2)
+		
+		
+		
+		
 		var a = Label.new()
 		var b = Label.new()
 		
@@ -89,10 +219,11 @@ func int_to_bin(num, bits):
 		else:
 			output[global.inputs_used[count]] = false
 		count += 1
+		#print(output)
 	return output
 
 func input_variations():
-	var variations = []  #a list of dicitonaries which will be the binary
+	var variations = []  #a list of dicitonaries which will be the binary numbers
 	var num_inputs = len(input_nodes) #this will represent the number of bits in the binary
 	for x in range(0, 2**num_inputs): #2^num_inputs is the number of different inputs variations which need to be calcualted for the truth table
 		variations.append(int_to_bin(x, num_inputs))

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 global="*res://Scripts/global.gd"
 GatesClass="*res://Scripts/gates_class.gd"
+User="*res://Scripts/user.gd"
 
 [display]
 

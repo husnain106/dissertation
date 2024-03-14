@@ -4,7 +4,7 @@ var dragging = false
 var draggable = false
 var offset = Vector2(0,0)
 
-var initial_position
+var initial_position = Vector2(0,0)
 var gateType
 var inputs_available
 var max_inputs
@@ -12,7 +12,6 @@ var inputs_coordinates
 var output_coordinates
 
 var path
-
 
 func _process(delta):
 	if dragging and not global.linking and not global.truth_table:
@@ -39,9 +38,8 @@ func update_connections():
 			connection.update_coordinates(initial_position - position, "pos2")
 	initial_position = position
 
-func remove_input(name):
-	pass
-
+func move_to(pos):
+	position = pos
 
 func _on_area_2d_mouse_entered():
 	if not global.truth_table:

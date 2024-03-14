@@ -67,6 +67,7 @@ layout_mode = 2
 
 [node name="username" type="Label" parent="margin_main/vertical_container/margin_account_row/account_row/margin_name"]
 z_index = 1
+custom_minimum_size = Vector2(270, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -79,21 +80,10 @@ custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 
 [node name="RlUranked" type="Sprite2D" parent="margin_main/vertical_container/margin_account_row/account_row/margin_rank"]
+visible = false
 position = Vector2(37.5, 37.5)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_avh01")
-
-[node name="margin_gold_amount" type="MarginContainer" parent="margin_main/vertical_container/margin_account_row/account_row"]
-z_index = 1
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-
-[node name="gold_amount" type="Label" parent="margin_main/vertical_container/margin_account_row/account_row/margin_gold_amount"]
-z_index = 1
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "#number"
 
 [node name="margin_gold_icon" type="MarginContainer" parent="margin_main/vertical_container/margin_account_row/account_row"]
 z_index = 1
@@ -104,6 +94,19 @@ layout_mode = 2
 position = Vector2(37.5, 37.5)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_narqd")
+
+[node name="margin_gold_amount" type="MarginContainer" parent="margin_main/vertical_container/margin_account_row/account_row"]
+z_index = 1
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="gold_amount" type="Label" parent="margin_main/vertical_container/margin_account_row/account_row/margin_gold_amount"]
+z_index = 1
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "#number"
 
 [node name="margin_menu_button" type="MarginContainer" parent="margin_main/vertical_container/margin_account_row/account_row"]
 layout_mode = 2

@@ -1,0 +1,11 @@
+func eval():
+	User.name = "username123"
+	User.level = 2
+	User.gold = 200
+	
+	User.owned_themes["first_draft"] = false
+	User.owned_themes["blue"] = true
+	User.owned_themes["green"] = false
+	User.owned_themes["red"] = false
+	
+	User.gates_theme = "blue"
