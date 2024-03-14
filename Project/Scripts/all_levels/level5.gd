@@ -3,6 +3,8 @@ extends "res://Scripts/all_levels/LevelClass.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _init():
+	reward = 50
+	
 	initial_entities = {
 		"not0": ["not", Vector2(300, 150)],
 		"A": ["input", random_position("input")],

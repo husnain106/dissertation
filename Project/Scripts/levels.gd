@@ -7,8 +7,8 @@ var time
 func _ready():
 	#get_node("VBoxContainer/logic_gates_bar").clear()
 	global.current_mode = "levels"
-	
-	var path = "res://Scripts/all_levels/level" + str(User.level)+ ".gd"
+	get_node("VBoxContainer/header/level_number").text = "Level: " + str(User.get_level())
+	var path = "res://Scripts/all_levels/level" + str(User.get_level())+ ".gd"
 	var load_level = load(path)
 	completed = false
 	curr_level = load_level.new()
@@ -72,9 +72,11 @@ func _process(delta):
 		get_node("VBoxContainer/drop_space/truth_table_button").pressed.emit() #show the completed truh table to the user
 		await get_node("VBoxContainer/drop_space/truth_table_button").pressed #wait until the user closes the truth table to change to next level
 		
+		#give user their reward for this level
+		User.set_gold(User.get_gold() + curr_level.reward)
 		
-		#change to the nect scene
-		User.level += 1
+		#change to the next scene
+		User.set_level(User.get_level() + 1)
 		global.change_scene_to = "res://Scenes/levels.tscn"
 		get_tree().change_scene_to_file("res://Scenes/home.tscn")
 	else:

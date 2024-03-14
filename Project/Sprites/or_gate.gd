@@ -10,7 +10,7 @@ func _ready():
 	assign_name()
 	global.entities[name] = self
 	
-	var icon = load("res://Assets/logic_gates/" + User.gates_theme+ "/or_gate.png")
+	var icon = load("res://Assets/logic_gates/" + User.get_gates_theme().replace('"', "") + "/or_gate.png")
 	get_node("Button").set_button_icon(icon)
 
 

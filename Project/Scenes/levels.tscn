@@ -33,6 +33,15 @@ theme_override_constants/separation = 0
 [node name="header" parent="VBoxContainer" instance=ExtResource("1_x8fri")]
 layout_mode = 2
 
+[node name="level_number" type="Label" parent="VBoxContainer/header"]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 2.0
+offset_right = 435.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "level: 1"
+
 [node name="drop_space" parent="VBoxContainer" instance=ExtResource("2_7l87g")]
 layout_mode = 2
 

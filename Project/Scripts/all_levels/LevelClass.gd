@@ -1,5 +1,7 @@
 extends Node
 
+var reward #gold reward for completing the level
+
 #the initial incomplete circuit that the user will need to complete
 var initial_entities = {}   #a dictionary where key is the name, element is an array where index 0 is type and index 1 is vector for position
 var initial_connections = [] #a list of dictionaries where each dictionary is a connection and the dictionaries contain the two connecting entities

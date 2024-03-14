@@ -10,7 +10,7 @@ func _ready():
 	global.entities[name] = self
 	
 	#set the right theme of the logic gate
-	var icon = load("res://Assets/logic_gates/" + User.gates_theme+ "/and_gate.png")
+	var icon = load("res://Assets/logic_gates/" + User.get_gates_theme().replace('"', "")+ "/and_gate.png")
 	get_node("Button").set_button_icon(icon)
 
 func calculate_values(values):
