@@ -7,7 +7,7 @@ var time
 func _ready():
 	#get_node("VBoxContainer/logic_gates_bar").clear()
 	global.current_mode = "levels"
-	
+	get_node("VBoxContainer/header/level_number").text = "Level: " + str(User.level)
 	var path = "res://Scripts/all_levels/level" + str(User.level)+ ".gd"
 	var load_level = load(path)
 	completed = false

@@ -1,5 +1,7 @@
 extends Node2D
 
+var username
+
 var gold = 500
 var level = 1
 

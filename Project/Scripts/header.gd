@@ -6,3 +6,4 @@ func _on_texture_button_pressed():
 
 func _process(delta):
 	get_node("margin_header_row/header_row/margin_gold_amount/gold_amount").text = str(User.gold)
+	get_node("margin_header_row/header_row/username").text = str(User.username)
