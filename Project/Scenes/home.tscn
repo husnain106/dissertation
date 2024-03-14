@@ -427,12 +427,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_sm100")
 text = "     CLAIM NOW!!    "
 icon_alignment = 1
 
-[node name="margin_option_row" type="MarginContainer" parent="margin_main/vertical_container"]
-layout_mode = 2
-
-[node name="option_row" type="HBoxContainer" parent="margin_main/vertical_container/margin_option_row"]
-layout_mode = 2
-
 [node name="menu" parent="." instance=ExtResource("9_jn6l6")]
 visible = false
 z_index = 2
