@@ -1,7 +1,5 @@
 husnain
-1000
-2
-"blue"
+100
+1
 "first_draft"
-"blue"
-"red"
+"first_draft"
