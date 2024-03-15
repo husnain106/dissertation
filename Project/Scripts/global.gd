@@ -33,5 +33,6 @@ var level_number = 5
 var change_scene_to = null
 
 var correct_truth_table = []
+var curr_level
 
 var challenges = {}

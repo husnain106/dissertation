@@ -10,8 +10,6 @@ func _ready():
 	get_node("margin_main/vertical_container/margin_account_row/account_row/margin_name/username").text = str(User.get_username())
 	get_node("margin_main/vertical_container/margin_account_row/account_row/margin_gold_amount/gold_amount").text = str(User.get_gold())
 	
-	
-	
 	#get_node("margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge1_container/challenge_container/ProgressBar").set_value()
 	
 	if global.change_scene_to !=  null:

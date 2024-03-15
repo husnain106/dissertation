@@ -12,6 +12,7 @@ func _ready():
 	var load_level = load(path)
 	completed = false
 	curr_level = load_level.new()
+	global.curr_level = curr_level
 	#global.correct_truth_table = curr_level.truth_table_values
 	global.inputs_used = []
 	show_message(curr_level)

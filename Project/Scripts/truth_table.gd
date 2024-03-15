@@ -99,24 +99,31 @@ func levels_output(all_input_variations, output_values):
 		var a = Label.new()
 		var b = Label.new()
 		
-		var open_sans = load("res://Assets/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf")
-		
-		a.text = dictionary_to_string(all_input_variations[x])
-		get_node("ScrollContainer/GridContainer").add_child(a)
-		
-		
-		b.text = dictionary_to_string(output_values[x])
-		get_node("ScrollContainer/GridContainer").add_child(b)
+		#var open_sans = load("res://Assets/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf")
 
 		if (range(global.correct_truth_table.size()).has(x)):
 			if global.correct_truth_table[x] == output_values[x]:
 				a.modulate = Color(0,255,0)
 				b.modulate = Color(0,255,0)
+				a.text = dictionary_to_string(all_input_variations[x])
+				get_node("ScrollContainer/GridContainer").add_child(a)
+		
+		
+				b.text = dictionary_to_string(output_values[x])
+				get_node("ScrollContainer/GridContainer").add_child(b)
 			else:
 				a.modulate = Color(255, 0, 0)
 				b.modulate = Color(255, 0, 0)
+
+				a.text = dictionary_to_string(all_input_variations[x])
+				print(a.text)
+				get_node("ScrollContainer/GridContainer").add_child(a)
+		
+		
+				b.text = dictionary_to_string(output_values[x])
+				get_node("ScrollContainer/GridContainer").add_child(b)
 				var c = Label.new()
-				a.text = " "
+				c.text = " "
 				get_node("ScrollContainer/GridContainer").add_child(c)
 				
 				var d = Label.new()
@@ -126,8 +133,12 @@ func levels_output(all_input_variations, output_values):
 		else:
 			a.modulate = Color(255, 0, 0)
 			b.modulate = Color(255, 0, 0)
+			a.text = dictionary_to_string(all_input_variations[x])
+			get_node("ScrollContainer/GridContainer").add_child(a)
+			b.text = dictionary_to_string(output_values[x])
+			get_node("ScrollContainer/GridContainer").add_child(b)
 			var c = Label.new()
-			a.text = " "
+			c.text = " "
 			get_node("ScrollContainer/GridContainer").add_child(c)
 			
 			var d = Label.new()
