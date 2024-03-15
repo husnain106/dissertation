@@ -5,7 +5,12 @@ func _ready():
 	var file = FileAccess.open(user_res, FileAccess.READ)
 	var content = process_file(file.get_as_text())
 	
-	print(User.get_daily_challenge()[0].target_level)
+	get_node("margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge1_container/challenge_container/Label").text= User.get_daily_challenge()[0].message
+	get_node("margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge1_container/challenge_container/ProgressBar").value = User.get_daily_challenge()[0].progress
+	
+	if User.get_daily_challenge()[0].check_if_complete():
+		get_node("margin_main/vertical_container/margin_challenge_row/challenge_row/daily_challenges/daily_challenge1_container/Control/Button").disabled = false
+	#print(User.get_daily_challenge()[0].target_level)
 	
 	get_node("margin_main/vertical_container/margin_account_row/account_row/margin_name/username").text = str(User.get_username())
 	get_node("margin_main/vertical_container/margin_account_row/account_row/margin_gold_amount/gold_amount").text = str(User.get_gold())

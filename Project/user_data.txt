@@ -1,6 +1,6 @@
 husnain
-450
-10
+170
+5
 "first_draft"
 <null>
 first_draft

@@ -189,6 +189,7 @@ offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 9
 theme_override_styles/normal = SubResource("StyleBoxFlat_sm100")
+disabled = true
 text = "     CLAIM NOW!!    "
 icon_alignment = 1
 
@@ -231,6 +232,7 @@ offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 9
 theme_override_styles/normal = SubResource("StyleBoxFlat_sm100")
+disabled = true
 text = "     CLAIM NOW!!    "
 icon_alignment = 1
 
@@ -273,6 +275,7 @@ offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 9
 theme_override_styles/normal = SubResource("StyleBoxFlat_sm100")
+disabled = true
 text = "     CLAIM NOW!!    "
 icon_alignment = 1
 
@@ -340,6 +343,7 @@ offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 9
 theme_override_styles/normal = SubResource("StyleBoxFlat_sm100")
+disabled = true
 text = "     CLAIM NOW!!    "
 icon_alignment = 1
 
@@ -382,6 +386,7 @@ offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 9
 theme_override_styles/normal = SubResource("StyleBoxFlat_sm100")
+disabled = true
 text = "     CLAIM NOW!!    "
 icon_alignment = 1
 
@@ -424,6 +429,7 @@ offset_bottom = 40.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 9
 theme_override_styles/normal = SubResource("StyleBoxFlat_sm100")
+disabled = true
 text = "     CLAIM NOW!!    "
 icon_alignment = 1
 
