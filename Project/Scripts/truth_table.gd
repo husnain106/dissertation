@@ -60,7 +60,7 @@ func _on_visibility_changed():
 		
 		
 		if global.current_mode == "levels": #if currently playing levels...
-			levels_output(all_input_variations, output_values)
+			levels_output(global.curr_level.input_variations, output_values)
 		else:
 			output(all_input_variations, output_values)
 	else:
@@ -84,7 +84,7 @@ func levels_output(all_input_variations, output_values):
 	
 	
 	
-	for x in range (len(output_values)):
+	for x in range (len(all_input_variations)):
 		var dash = Label.new()
 		dash.modulate = Color(0,0,0)
 		dash.text = "--------"
@@ -101,7 +101,7 @@ func levels_output(all_input_variations, output_values):
 		
 		#var open_sans = load("res://Assets/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf")
 
-		if (range(global.correct_truth_table.size()).has(x)):
+		if (len(global.correct_truth_table) == len(output_values)):
 			if global.correct_truth_table[x] == output_values[x]:
 				a.modulate = Color(0,255,0)
 				b.modulate = Color(0,255,0)
@@ -135,7 +135,7 @@ func levels_output(all_input_variations, output_values):
 			b.modulate = Color(255, 0, 0)
 			a.text = dictionary_to_string(all_input_variations[x])
 			get_node("ScrollContainer/GridContainer").add_child(a)
-			b.text = dictionary_to_string(output_values[x])
+			b.text = "N/A"
 			get_node("ScrollContainer/GridContainer").add_child(b)
 			var c = Label.new()
 			c.text = " "
@@ -214,7 +214,7 @@ func dfs(node, values):
 
 
 func int_to_bin(num, bits):
-	var count = 0
+	var count = len(global.inputs_used) -1 
 	var output = {}
 	for x in range(bits, 0, -1):
 		if num >= 2**(x-1):
@@ -222,7 +222,7 @@ func int_to_bin(num, bits):
 			num -= 2**(x-1)
 		else:
 			output[global.inputs_used[count]] = false
-		count += 1
+		count -= 1
 		#print(output)
 	return output
 

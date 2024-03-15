@@ -29,10 +29,10 @@ func _init():
 	{"A": false, "B": true},
 	{"A": true, "B": true}]
 	
-	truth_table_values = [{"or0": true},
-	{"or0": false},
-	{"or0": false},
-	{"or0": false}
+	truth_table_values = [{"not0": true},
+	{"not0": false},
+	{"not0": false},
+	{"not0": false}
 	]
 	
 	message = "Use the skills you have been taught to
@@ -42,7 +42,7 @@ func _init():
 	buttons_enabled = {
 	"not_gate_button" : true,
 	"and_gate_button" : false,
-	"or_gate_button" : true,
+	"or_gate_button" : false,
 	"new_input_button" : true,
 	"link_button" : true,
 	"delete_button" : true
