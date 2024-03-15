@@ -5,6 +5,8 @@ func _ready():
 	var file = FileAccess.open(user_res, FileAccess.READ)
 	var content = process_file(file.get_as_text())
 	
+	print(User.get_daily_challenge()[0].target_level)
+	
 	get_node("margin_main/vertical_container/margin_account_row/account_row/margin_name/username").text = str(User.get_username())
 	get_node("margin_main/vertical_container/margin_account_row/account_row/margin_gold_amount/gold_amount").text = str(User.get_gold())
 	
@@ -37,8 +39,13 @@ func process_file(content):
 	User.set_gates_theme(content[0])
 	content.remove_at(0)
 	
+	User.add_daily_challenge(load("res://Scripts/challenges/daily_challenge1.gd").new(int(content[0])))
+	content.remove_at(0)
+	
 	for x in range (0, len(content)):
 		if content[x] != "":
 			var temp = content[x].replace('"', "")
 			#temp = temp.replace()
 			User.bought_theme(temp)
+		else:
+			break
