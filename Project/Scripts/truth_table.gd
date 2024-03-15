@@ -69,27 +69,18 @@ func _on_visibility_changed():
 
 
 func levels_output(all_input_variations, output_values):
-	#get_node("ColorRect").scale = Vector2(1.1,1)
-	#get_node("ColorRect2").scale = Vector2(1.1,1)
-	#get_node("ScrollContainer").scale = Vector2(1.1,1)
-	
-	#get_node("ScrollContainer/GridContainer").columns = 3
 	
 	var input = Label.new()
 	var output = Label.new()
-	#var correct_output = Label.new()
 	
 	input.modulate = Color(0,0,0)
 	output.modulate = Color(0,0,0)
-	#correct_output.modulate = Color(0,0,0)
 	
 	input.text = "Inputs"
 	output.text = "Outputs"
-	#correct_output.text = "Correct Outputs"
 	
 	get_node("ScrollContainer/GridContainer").add_child(input)
 	get_node("ScrollContainer/GridContainer").add_child(output)
-	#get_node("ScrollContainer/GridContainer").add_child(correct_output)
 	
 	
 	
@@ -104,18 +95,18 @@ func levels_output(all_input_variations, output_values):
 		dash2.text = "--------"
 		get_node("ScrollContainer/GridContainer").add_child(dash2)
 		
-		#var dash3 = Label.new()
-		#dash3.modulate = Color(0,0,0)
-		#dash3.text = "--------"
-		#get_node("ScrollContainer/GridContainer").add_child(dash3)
-		
 		
 		var a = Label.new()
 		var b = Label.new()
-		var c = Label.new()
-		c.modulate = Color(0, 255, 0)
 		
 		var open_sans = load("res://Assets/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf")
+		
+		a.text = dictionary_to_string(all_input_variations[x])
+		get_node("ScrollContainer/GridContainer").add_child(a)
+		
+		
+		b.text = dictionary_to_string(output_values[x])
+		get_node("ScrollContainer/GridContainer").add_child(b)
 
 		if (range(global.correct_truth_table.size()).has(x)):
 			if global.correct_truth_table[x] == output_values[x]:
@@ -124,27 +115,29 @@ func levels_output(all_input_variations, output_values):
 			else:
 				a.modulate = Color(255, 0, 0)
 				b.modulate = Color(255, 0, 0)
+				var c = Label.new()
+				a.text = " "
+				get_node("ScrollContainer/GridContainer").add_child(c)
+				
+				var d = Label.new()
+				d.text = dictionary_to_string(global.correct_truth_table[x])
+				d.modulate = Color(0,255,0)
+				get_node("ScrollContainer/GridContainer").add_child(d)
 		else:
 			a.modulate = Color(255, 0, 0)
 			b.modulate = Color(255, 0, 0)
+			var c = Label.new()
+			a.text = " "
+			get_node("ScrollContainer/GridContainer").add_child(c)
+			
+			var d = Label.new()
+			d.text = dictionary_to_string(global.correct_truth_table[x])
+			d.modulate = Color(0,255,0)
+			get_node("ScrollContainer/GridContainer").add_child(d)
 		
-		a.text = dictionary_to_string(all_input_variations[x])
-		get_node("ScrollContainer/GridContainer").add_child(a)
-		
-		
-		b.text = dictionary_to_string(output_values[x])
-		get_node("ScrollContainer/GridContainer").add_child(b)
-		
-		#c.text = dictionary_to_string(global.correct_truth_table[x])
-		#get_node("ScrollContainer/GridContainer").add_child(c)
 
 func output(all_input_variations, output_values):
-	#get_node("ColorRect").scale = Vector2(1,1)
-	#get_node("ColorRect2").scale = Vector2(1,1)
-	#get_node("ScrollContainer").scale = Vector2(1,1)
-	
-	
-	#get_node("ScrollContainer/GridContainer").columns = 2
+
 	var input = Label.new()
 	input.modulate = (Color(0,0,0))
 	input.text = "Inputs"
